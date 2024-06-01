@@ -1,17 +1,19 @@
 import { Component } from "react";
-import BarraNavegacao from "./barraNavegacao";
-import ListaCliente from "./listaClientes";
-import FormularioCadastroCliente from "./formularioCadastroCliente";
+import BarraNavegacao from "../barraNavegacao";
+import RoteadorCliente from "./roteadorCliente";
+import Empresa from "../../modelo/empresa";
 
 type state = {
     tela: string
+    empresa: Empresa
 }
 
-export default class Roteador extends Component<{}, state>{
+export default class Roteador extends Component<{}, state> {
     constructor(props: {} | Readonly<{}>) {
         super(props)
         this.state = {
-            tela: 'Clientes'
+            tela: 'Clientes',
+            empresa: new Empresa()
         }
         this.selecionarView = this.selecionarView.bind(this)
     }
@@ -25,19 +27,23 @@ export default class Roteador extends Component<{}, state>{
     }
 
     render() {
-        let barraNavegacao = <BarraNavegacao seletorView={this.selecionarView} tema="#e3f2fd" botoes={['Clientes', 'Cadastros']} />
+        let barraNavegacao = <BarraNavegacao
+            seletorView={this.selecionarView}
+            botoes={['Clientes', 'Pets', 'Produtos', 'Serviços']}
+            mensagem="PetLovers" />
+
         if (this.state.tela === 'Clientes') {
             return (
                 <>
                     {barraNavegacao}
-                    <ListaCliente tema="#e3f2fd" />
+                    <RoteadorCliente />
                 </>
             )
-        } else {
+        } else if (this.state.tela === 'Pets') {
             return (
                 <>
                     {barraNavegacao}
-                    <FormularioCadastroCliente tema="#e3f2fd" />
+                    <h1>PEIXE</h1>
                 </>
             )
         }
