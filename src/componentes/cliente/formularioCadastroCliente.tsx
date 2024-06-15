@@ -1,30 +1,288 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Component } from "react";
 import Cliente from "../../modelo/cliente";
+import CPF from "../../modelo/cpf";
+import RG from "../../modelo/rg";
+import Telefone from "../../modelo/telefone";
+import "./formularioCadastroCliente.css"
 
 type props = {
     clientes: Array<Cliente>
 }
 
-export default class FormularioCadastroCliente extends Component<props> {
-    
+type state = {
+    clientes: Array<Cliente>
+    nome: string
+    nomeSocial: string
+    email: string
+    valorCpf: string
+    dataCpf: string
+    qtdRg: number
+    valorRg: string
+    dataRg: string
+    qtdTelefone: number
+    telefone1: string
+    telefone2?: string
+    avisos: string
+}
+
+export default class FormularioCadastroCliente extends Component<props, state> {
+    constructor(props: props | Readonly<props>) {
+        super(props)
+        this.state = {
+            clientes: props.clientes,
+            nome: "",
+            nomeSocial: "",
+            email: "",
+            valorCpf: "",
+            dataCpf: "",
+            qtdRg: 0,
+            valorRg: "",
+            dataRg: "",
+            qtdTelefone: 0,
+            telefone1: "",
+            telefone2: "",
+            avisos: ""
+
+        }
+        this.mudarValorNome = this.mudarValorNome.bind(this)
+        this.mudarValorNomeSocial = this.mudarValorNomeSocial.bind(this)
+
+        this.mudarValorEmail = this.mudarValorEmail.bind(this)
+
+        this.mudarValorCpf = this.mudarValorCpf.bind(this)
+        this.mudarValorDataCpf = this.mudarValorDataCpf.bind(this)
+
+        this.mudarValorQtdRg = this.mudarValorQtdRg.bind(this)
+        this.mudarValorRg = this.mudarValorRg.bind(this)
+        this.mudarValorDataRg = this.mudarValorDataRg.bind(this)
+
+        this.mudarValorQtdTel = this.mudarValorQtdTel.bind(this)
+        this.mudarValorTelefone1 = this.mudarValorTelefone1.bind(this)
+        this.mudarValorTelefone2 = this.mudarValorTelefone2.bind(this)
+
+        this.clienteCriarAdicionar = this.clienteCriarAdicionar.bind(this)
+    }
+
+    mudarValorNome(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            nome: e.target.value
+        })
+    }
+
+    mudarValorNomeSocial(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            nomeSocial: e.target.value
+        })
+    }
+
+    mudarValorEmail(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            email: e.target.value
+        })
+    }
+
+    mudarValorCpf(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            valorCpf: e.target.value
+        })
+    }
+
+    mudarValorDataCpf(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            dataCpf: e.target.value
+        })
+    }
+
+    mudarValorQtdRg(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            qtdRg: Number(e.target.value).valueOf()
+        })
+    }
+
+    mudarValorRg(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            valorRg: e.target.value
+        })
+    }
+
+    mudarValorDataRg(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            dataRg: e.target.value
+        })
+    }
+
+    mudarValorQtdTel(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            qtdTelefone: Number(e.target.value).valueOf()
+        })
+    }
+
+    mudarValorTelefone1(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            telefone1: e.target.value
+        })
+    }
+
+    mudarValorTelefone2(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            telefone2: e.target.value
+        })
+    }
+
+    clienteCriarAdicionar(e: React.ChangeEvent<HTMLFormElement>) {
+        e.preventDefault()
+
+        if (this.state.nome === "") {
+            this.setState({
+                avisos: "Coloque um nome\n"
+            })
+            return
+        }
+
+        let listaTel = [new Telefone(this.state.telefone1.substring(0, 2), this.state.telefone1.substring(2))]
+
+        if (this.state.telefone2 !== "" && this.state.telefone2 !== undefined) {
+            listaTel.push(new Telefone(this.state.telefone2.substring(0, 2), this.state.telefone2.substring(2)))
+        }
+
+        // let datasCpf = this.state.dataCpf.split("")
+        // let datasRg = this.state.dataRg.split("-")
+
+        this.props.clientes.push(new Cliente(
+            this.state.nome,
+            this.state.nomeSocial,
+            this.state.email,
+            new CPF(this.state.valorCpf, new Date(this.state.dataCpf)),
+            [new RG(this.state.valorRg,
+                new Date(this.state.dataRg))],
+            listaTel))
+
+        this.setState({
+            nome: "",
+            nomeSocial: "",
+            email: "",
+            valorCpf: "",
+            dataCpf: "",
+            valorRg: "",
+            dataRg: "",
+            telefone1: "",
+            telefone2: "",
+            avisos: ""
+        })
+    }
+
     render() {
         return (
-            <div className="container-fluid">
-                <form>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" placeholder="Nome" aria-label="Nome" aria-describedby="basic-addon1" />
+            <div className="containerFormularioCliente">
+
+                <div>{this.state.avisos}</div>
+
+                <form className="formularioCliente" onSubmit={this.clienteCriarAdicionar}>
+
+                    <div className="linhaFormularioCadastroCliente">
+
+                        <div className="campoInputTextoCadastroCliente">
+                            <label>Nome</label>
+                            <input type="text"
+                                className="inputClienteForms"
+                                placeholder="Nome"
+                                value={this.state.nome}
+                                onChange={this.mudarValorNome} />
+                        </div>
+
+                        <div className="campoInputTextoCadastroCliente">
+                            <label>Nome Social</label>
+                            <input type="text"
+                                className="inputClienteForms"
+                                placeholder="Nome social"
+                                value={this.state.nomeSocial}
+                                onChange={this.mudarValorNomeSocial} />
+                        </div>
+
                     </div>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" placeholder="Nome social" aria-label="Nome social" aria-describedby="basic-addon1" />
+
+                    <div className="linhaFormularioCadastroCliente">
+
+                        <div className="campoInputTextoCadastroCliente">
+                            <label>Email</label>
+                            <input type="email"
+                                className="inputClienteForms"
+                                placeholder="E-mail"
+                                value={this.state.email}
+                                onChange={this.mudarValorEmail} />
+                        </div>
+
+                        <div className="inputsComDataFormsCliente">
+
+                            <div className="campoInputTextoCadastroCliente">
+                                <label>CPF</label>
+                                <input type="text"
+                                    className="inputClienteForms"
+                                    placeholder="CPF"
+                                    value={this.state.valorCpf}
+                                    onChange={this.mudarValorCpf} />
+                            </div>
+
+                            <div className="campoInputTextoCadastroCliente">
+                                <label>Data de emissão CPF</label>
+                                <input type="date"
+                                    className="inputClienteForms"
+                                    value={this.state.dataCpf}
+                                    onChange={this.mudarValorDataCpf} />
+                            </div>
+                        </div>
+
                     </div>
-                    <div className="input-group mb-3">
-                        <span className="input-group-text" id="basic-addon1">@</span>
-                        <input type="text" className="form-control" placeholder="E-mail" aria-label="E-mail" aria-describedby="basic-addon1" />
+
+                    <div className="linhaFormularioCadastroCliente">
+
+                        <div className="inputsComDataFormsCliente">
+
+                            <div className="campoInputTextoCadastroCliente">
+                                <label>RG</label>
+                                <input type="text"
+                                    className="inputClienteForms"
+                                    placeholder="RG"
+                                    value={this.state.valorRg}
+                                    onChange={this.mudarValorRg} />
+                            </div>
+
+                            <div className="campoInputTextoCadastroCliente">
+                                <label>Date de emissão do RG</label>
+                                <input type="date"
+                                    className="inputClienteForms"
+                                    value={this.state.dataRg}
+                                    onChange={this.mudarValorDataRg} />
+                            </div>
+
+                        </div>
+
+                        <div className="campoInputTextoCadastroCliente">
+                            <label>1º Telefone</label>
+                            <input type="text"
+                                className="inputClienteForms"
+                                placeholder="Telefone"
+                                value={this.state.telefone1}
+                                onChange={this.mudarValorTelefone1} />
+                        </div>
+
+                        <div className="campoInputTextoCadastroCliente">
+                            <label>2º Telefone</label>
+                            <input type="text"
+                                className="inputClienteForms"
+                                placeholder="Telefone"
+                                value={this.state.telefone2}
+                                onChange={this.mudarValorTelefone2} />
+                        </div>
+
                     </div>
-                    <div className="input-group mb-3">
-                        <button className="btn btn-outline-secondary" type="button">Cadastrar</button>
+
+                    <div className="containerBotaoCadastrarCliente">
+                        <button className="botaoCadastrarCliente">Cadastrar</button>
                     </div>
                 </form>
+
             </div>
         )
     }

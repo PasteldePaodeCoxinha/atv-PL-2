@@ -8,6 +8,7 @@ import Telefone from "./telefone"
 export default class Cliente {
     public nome: string
     public nomeSocial: string
+    private email: string
     private cpf: CPF
     private rgs: Array<RG>
     private dataCadastro: Date
@@ -16,9 +17,10 @@ export default class Cliente {
     private servicosConsumidos: Array<Servico>
     private valorGasto: number
     private pets: Array<Pet>
-    constructor(nome: string, nomeSocial: string, cpf: CPF, rgs: Array<RG>, telefones: Array<Telefone>) {
+    constructor(nome: string, nomeSocial: string, email: string, cpf: CPF, rgs: Array<RG>, telefones: Array<Telefone>) {
         this.nome = nome
         this.nomeSocial = nomeSocial
+        this.email = email
         this.cpf = cpf
         this.rgs = rgs
         this.dataCadastro = new Date()
@@ -28,6 +30,14 @@ export default class Cliente {
         this.valorGasto = 0
         this.pets = []
     }
+    public get getEmail(): string {
+        return this.email
+    }
+
+    public set setEmail(email: string) {
+        this.email = email
+    }
+
     public get getCpf(): CPF {
         return this.cpf
     }

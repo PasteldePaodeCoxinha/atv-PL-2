@@ -1,0 +1,12 @@
+.informacoesDosClientes {
+    display: flex;
+    flex-direction: column;
+}
+
+.botaoSelecionarClienteNaListaCliente {
+    width: 10%;
+}
+
+li {
+    list-style-type: none;
+}

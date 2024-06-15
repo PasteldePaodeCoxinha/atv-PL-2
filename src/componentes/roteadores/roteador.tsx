@@ -36,7 +36,7 @@ export default class Roteador extends Component<{}, state> {
             return (
                 <>
                     {barraNavegacao}
-                    <RoteadorCliente />
+                    <RoteadorCliente clientes={this.state.empresa.getClientes}/>
                 </>
             )
         } else if (this.state.tela === 'Pets') {

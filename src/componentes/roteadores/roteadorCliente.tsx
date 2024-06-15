@@ -2,19 +2,22 @@ import { Component } from "react";
 import BarraNavegacao from "../barraNavegacao";
 import ListaCliente from "../cliente/listaClientes";
 import FormularioCadastroCliente from "../cliente/formularioCadastroCliente";
-import Empresa from "../../modelo/empresa";
+import Cliente from "../../modelo/cliente";
+
+type props = {
+    clientes: Array<Cliente>
+}
 
 type state = {
     tela: string
-    empresa: Empresa
+
 }
 
-export default class RoteadorCliente extends Component<{}, state> {
-    constructor(props: {} | Readonly<{}>) {
+export default class RoteadorCliente extends Component<props, state> {
+    constructor(props: props | Readonly<props>) {
         super(props)
         this.state = {
-            tela: 'Lista',
-            empresa: new Empresa()
+            tela: 'Cadastro'
         }
         this.selecionarView = this.selecionarView.bind(this)
     }
@@ -36,14 +39,14 @@ export default class RoteadorCliente extends Component<{}, state> {
             return (
                 <>
                     {barraNavegacao}
-                    <ListaCliente />
+                    <ListaCliente clientes={this.props.clientes}/>
                 </>
             )
         } else if (this.state.tela === 'Cadastro') {
             return (
                 <>
                     {barraNavegacao}
-                    <FormularioCadastroCliente clientes={this.state.empresa.getClientes} />
+                    <FormularioCadastroCliente clientes={this.props.clientes} />
                 </>
             )
         }
