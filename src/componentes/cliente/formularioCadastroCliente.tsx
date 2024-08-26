@@ -176,8 +176,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
         return (
             <div className="containerFormularioCliente">
 
-                <div>{this.state.avisos}</div>
-
                 <form className="formularioCliente" onSubmit={this.clienteCriarAdicionar}>
 
                     <div className="linhaFormularioCadastroCliente">
@@ -200,10 +198,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 onChange={this.mudarValorNomeSocial} />
                         </div>
 
-                    </div>
-
-                    <div className="linhaFormularioCadastroCliente">
-
                         <div className="campoInputTextoCadastroCliente">
                             <label>Email</label>
                             <input type="email"
@@ -212,6 +206,10 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 value={this.state.email}
                                 onChange={this.mudarValorEmail} />
                         </div>
+
+                    </div>
+
+                    <div className="linhaFormularioCadastroCliente">
 
                         <div className="inputsComDataFormsCliente">
 
@@ -233,10 +231,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                             </div>
                         </div>
 
-                    </div>
-
-                    <div className="linhaFormularioCadastroCliente">
-
                         <div className="inputsComDataFormsCliente">
 
                             <div className="campoInputTextoCadastroCliente">
@@ -249,7 +243,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                             </div>
 
                             <div className="campoInputTextoCadastroCliente">
-                                <label>Date de emissão do RG</label>
+                                <label>Date de emissão RG</label>
                                 <input type="date"
                                     className="inputClienteForms"
                                     value={this.state.dataRg}
@@ -258,6 +252,9 @@ export default class FormularioCadastroCliente extends Component<props, state> {
 
                         </div>
 
+                    </div>
+
+                    <div className="linhaFormularioCadastroCliente">
                         <div className="campoInputTextoCadastroCliente">
                             <label>1º Telefone</label>
                             <input type="text"
@@ -275,7 +272,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 value={this.state.telefone2}
                                 onChange={this.mudarValorTelefone2} />
                         </div>
-
                     </div>
 
                     <div className="containerBotaoCadastrarCliente">

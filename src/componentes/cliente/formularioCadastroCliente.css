@@ -1,11 +1,15 @@
 .containerFormularioCliente {
-    width: 100%;
-    display: flex;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .formularioCliente {
-    width: 100%;
+    width: 87vw;
     display: grid;
+    background-color: aqua;
+    
 }
 
 .linhaFormularioCadastroCliente {
