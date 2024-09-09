@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: black;
 }
 
 .formularioCliente {
@@ -24,6 +25,8 @@
     width: 24%;
     display: inline-flex;
     justify-content: space-between;
+    border: 0;
+    outline: 0;
 }
 
 .campoInputTextoCadastroCliente label,

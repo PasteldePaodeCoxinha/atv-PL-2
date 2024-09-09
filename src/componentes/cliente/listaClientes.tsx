@@ -3,26 +3,25 @@ import React, { Component } from "react";
 import "./listaClientes.css"
 import Cliente from "../../modelo/cliente";
 import AlterarCliente from "./alterarCliente";
-
-type props = {
-    clientes: Array<Cliente>
-}
+import CPF from "../../modelo/cpf";
+import RG from "../../modelo/rg";
+import Telefone from "../../modelo/telefone";
 
 type state = {
     clientes: Array<Cliente>
-    cliente: Cliente | undefined
+    cliente: Cliente
     nome: string
     nomeSocial: string
     email: string
     telefone: string
 }
 
-export default class ListaCliente extends Component<props, state> {
-    constructor(props: props | Readonly<props>) {
+export default class ListaCliente extends Component<{}, state> {
+    constructor(props: {}, readonly<{}>) {
         super(props)
         this.state = {
-            clientes: props.clientes,
-            cliente: undefined,
+            clientes: [],
+            cliente: {},
             nome: "",
             nomeSocial: "",
             email: "",
@@ -37,13 +36,16 @@ export default class ListaCliente extends Component<props, state> {
         this.gerarListaCliente()
     }
 
-    componentDidUpdate(prevProps: props): void {
+    componentDidUpdate(): void {
         this.gerarListaCliente()
     }
 
     pegarUmCliente(nome: string) {
+        const clientes = [new Cliente("a","a","a@email.com",new CPF("123", new Date()), [new RG("147", new Date())], [new Telefone("12", "159")]),
+        new Cliente("b","b","b@email.com",new CPF("456", new Date()), [new RG("258", new Date())], [new Telefone("12", "348")]),
+        new Cliente("c","c","c@email.com",new CPF("789", new Date()), [new RG("369", new Date())], [new Telefone("12", "267")])]
         this.setState({
-            cliente: this.state.clientes.filter(c => c.nome === nome)[0],
+            cliente: clientes,
         })
     }
 

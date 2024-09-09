@@ -39,7 +39,7 @@ export default class RoteadorCliente extends Component<props, state> {
             return (
                 <>
                     {barraNavegacao}
-                    <ListaCliente clientes={this.props.clientes}/>
+                    <ListaCliente clientes={this.props.clientes} />
                 </>
             )
         } else if (this.state.tela === 'Cadastro') {
