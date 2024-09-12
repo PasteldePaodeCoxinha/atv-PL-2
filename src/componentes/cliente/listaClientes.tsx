@@ -9,7 +9,7 @@ import Telefone from "../../modelo/telefone";
 
 type state = {
     clientes: Array<Cliente>
-    cliente: Cliente
+    cliente: Cliente | undefined
     nome: string
     nomeSocial: string
     email: string
@@ -17,11 +17,13 @@ type state = {
 }
 
 export default class ListaCliente extends Component<{}, state> {
-    constructor(props: {}, readonly<{}>) {
+    constructor(props: {}) {
         super(props)
         this.state = {
-            clientes: [],
-            cliente: {},
+            clientes: [new Cliente("a", "a", "a@email.com", new CPF("123", new Date()), [new RG("147", new Date())], [new Telefone("12", "159")]),
+            new Cliente("b", "b", "b@email.com", new CPF("456", new Date()), [new RG("258", new Date())], [new Telefone("12", "348")]),
+            new Cliente("c", "c", "c@email.com", new CPF("789", new Date()), [new RG("369", new Date())], [new Telefone("12", "267")])],
+            cliente: undefined,
             nome: "",
             nomeSocial: "",
             email: "",
@@ -41,22 +43,19 @@ export default class ListaCliente extends Component<{}, state> {
     }
 
     pegarUmCliente(nome: string) {
-        const clientes = [new Cliente("a","a","a@email.com",new CPF("123", new Date()), [new RG("147", new Date())], [new Telefone("12", "159")]),
-        new Cliente("b","b","b@email.com",new CPF("456", new Date()), [new RG("258", new Date())], [new Telefone("12", "348")]),
-        new Cliente("c","c","c@email.com",new CPF("789", new Date()), [new RG("369", new Date())], [new Telefone("12", "267")])]
+        const cliente = this.state.clientes.find(c => c.nome === nome)
         this.setState({
-            cliente: clientes,
-        })
+            cliente: cliente,
+        })        
     }
 
     excluirCliente(nome: string) {
-        this.props.clientes.splice((this.props.clientes.findIndex(c => c.nome === nome)), 1)
+        this.state.clientes.splice((this.state.clientes.findIndex(c => c.nome === nome)), 1)
         this.setState({
-            clientes: this.props.clientes
+            clientes: this.state.clientes
         })
     }
 
-    
     gerarListaCliente() {
         if (this.state.clientes.length <= 0) {
             return <></>
@@ -91,7 +90,7 @@ export default class ListaCliente extends Component<{}, state> {
         } else {
             return (
                 <>
-                    <AlterarCliente cliente={this.state.cliente}/>
+                    <AlterarCliente cliente={this.state.cliente} />
                 </>
             )
         }
