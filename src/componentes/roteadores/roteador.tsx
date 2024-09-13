@@ -41,10 +41,10 @@ export default class Roteador extends Component<{}, state> {
             )
         } else if (this.state.tela === 'Pets') {
             return (
-                <>
+                <div className="backgroundDoSite">
                     {barraNavegacao}
                     <h1>PEIXE</h1>
-                </>
+                </div>
             )
         }
     }

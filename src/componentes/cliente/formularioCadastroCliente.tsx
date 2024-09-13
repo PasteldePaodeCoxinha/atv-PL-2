@@ -181,7 +181,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                     <div className="linhaFormularioCadastroCliente">
 
                         <div className="campoInputTextoCadastroCliente">
-                            <label>Nome</label>
                             <input type="text"
                                 className="inputClienteForms"
                                 placeholder="Nome"
@@ -190,7 +189,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                         </div>
 
                         <div className="campoInputTextoCadastroCliente">
-                            <label>Nome Social</label>
                             <input type="text"
                                 className="inputClienteForms"
                                 placeholder="Nome social"
@@ -199,7 +197,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                         </div>
 
                         <div className="campoInputTextoCadastroCliente">
-                            <label>Email</label>
                             <input type="email"
                                 className="inputClienteForms"
                                 placeholder="E-mail"
@@ -214,7 +211,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                         <div className="inputsComDataFormsCliente">
 
                             <div className="campoInputTextoCadastroCliente">
-                                <label>CPF</label>
                                 <input type="text"
                                     className="inputClienteForms"
                                     placeholder="CPF"
@@ -223,7 +219,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                             </div>
 
                             <div className="campoInputTextoCadastroCliente">
-                                <label>Data de emissão CPF</label>
                                 <input type="date"
                                     className="inputClienteForms"
                                     value={this.state.dataCpf}
@@ -234,7 +229,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                         <div className="inputsComDataFormsCliente">
 
                             <div className="campoInputTextoCadastroCliente">
-                                <label>RG</label>
                                 <input type="text"
                                     className="inputClienteForms"
                                     placeholder="RG"
@@ -243,7 +237,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                             </div>
 
                             <div className="campoInputTextoCadastroCliente">
-                                <label>Date de emissão RG</label>
                                 <input type="date"
                                     className="inputClienteForms"
                                     value={this.state.dataRg}
@@ -256,26 +249,24 @@ export default class FormularioCadastroCliente extends Component<props, state> {
 
                     <div className="linhaFormularioCadastroCliente">
                         <div className="campoInputTextoCadastroCliente">
-                            <label>1º Telefone</label>
                             <input type="text"
                                 className="inputClienteForms"
-                                placeholder="Telefone"
+                                placeholder="Telefone 1"
                                 value={this.state.telefone1}
                                 onChange={this.mudarValorTelefone1} />
                         </div>
 
                         <div className="campoInputTextoCadastroCliente">
-                            <label>2º Telefone</label>
                             <input type="text"
                                 className="inputClienteForms"
-                                placeholder="Telefone"
+                                placeholder="Telefone 2"
                                 value={this.state.telefone2}
                                 onChange={this.mudarValorTelefone2} />
                         </div>
                     </div>
 
                     <div className="containerBotaoCadastrarCliente">
-                        <button className="botaoCadastrarCliente">Cadastrar</button>
+                        <button className="botaoCadastrarCliente">CADASTRAR</button>
                     </div>
                 </form>
 

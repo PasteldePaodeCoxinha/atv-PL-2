@@ -1,4 +1,4 @@
-import { Component, ReactNode } from "react";
+import { Component} from "react";
 import Cliente from "../../modelo/cliente";
 
 type props = {

@@ -3,9 +3,18 @@
     justify-content: space-between;
     align-items: start;
     text-align: center;
+    background-color: #2513EB;
 }
 
 .botoesDaBarraDeNavegacao {
     display: inline-block;
     margin: 0 2vw;
+}
+
+.logoPetLovers {
+    color: white;
+}
+
+.linkDaBarraDeNavegacao {
+    color: #E0C524;
 }
