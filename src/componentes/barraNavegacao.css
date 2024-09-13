@@ -1,9 +1,13 @@
+.barraDeNavegacao {
+    border-bottom: 0.1vw solid #E0C524
+}
+
 .containerDaBarraDeNavegacao {
     display: flex;
     justify-content: space-between;
     align-items: start;
     text-align: center;
-    background-color: #2513EB;
+    background-color: #453E96;
 }
 
 .botoesDaBarraDeNavegacao {
@@ -16,5 +20,14 @@
 }
 
 .linkDaBarraDeNavegacao {
+    color: white;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-size: 1.3vw;
+}
+
+.linkDaBarraDeNavegacao:hover {
     color: #E0C524;
+    transition: all 0.3s;
+    text-decoration: none;
 }

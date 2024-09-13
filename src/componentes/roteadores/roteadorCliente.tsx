@@ -33,7 +33,7 @@ export default class RoteadorCliente extends Component<props, state> {
     render() {
         let barraNavegacao = <BarraNavegacao
             seletorView={this.selecionarView}
-            botoes={['Lista', 'Cadastro', 'Atualizar']}
+            botoes={['Lista', 'Cadastro']}
             mensagem="Cliente" />
         if (this.state.tela === 'Lista') {
             return (
