@@ -3,21 +3,20 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #453E96;
-    padding: 5vh;
+    padding: 4rem;
 }
 
 .formularioCliente {
-    width: 74vw;
+    width: 100%;
     display: grid;
-    gap: 13vh;
+    gap: 5rem;
 }
 
 .linhaFormularioCadastroCliente {
-    width: 100%;
+    width: 81vw;
     justify-content: space-around;
     display: inline-flex;
-    margin-bottom: 8vh;
+    margin-bottom: 4rem;
     align-items: center;
 }
 
@@ -45,8 +44,8 @@ label {
 
 .inputClienteForms {
     color: white;
-    width: 12vw;
-    font-size: 1.2vw;
+    width: 12rem;
+    font-size: 1.2rem;
     background: transparent;
     border-top: none;
     border-right: none;
@@ -56,8 +55,8 @@ label {
 
 .inputClienteForms:focus {
     color: white;
-    width: 12vw;
-    font-size: 1.2vw;
+    width: 12rem;
+    font-size: 1.2rem;
     background: transparent;
     border-top: none;
     border-right: none;
@@ -66,24 +65,24 @@ label {
     outline: none;
 }
 
-.containerBotaoCadastrarCliente button{
+.containerBotaoCadastrarCliente button {
     background-color: #E0C524;
     border: none;
     color: white;
-    padding: 1vw 2vw;
+    padding: 1rem 2rem;
     text-align: center;
-    font-size: 1.2vw;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.5s;
 }
 
-.containerBotaoCadastrarCliente button:hover{
+.containerBotaoCadastrarCliente button:hover {
     background-color: #E0C524;
     border: none;
     color: white;
-    padding: 1.1vw 2.1vw;
+    padding: 1.1rem 2.1rem;
     text-align: center;
-    font-size: 1.3vw;
+    font-size: 1.3rem;
     cursor: pointer;
     transition: all 0.5s;
 }

@@ -46,7 +46,7 @@ export default class ListaCliente extends Component<{}, state> {
         const cliente = this.state.clientes.find(c => c.nome === nome)
         this.setState({
             cliente: cliente,
-        })        
+        })
     }
 
     excluirCliente(nome: string) {

@@ -224,7 +224,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                     onBlur={e => e.target.type = "text"}
                                     className="inputClienteForms"
                                     placeholder="Data CPF"
-                                    value={this.state.dataCpf}
+                                    value={this.state.dataCpf ? this.state.dataCpf.substring(6,8) + "/" +this.state.dataCpf.substring(0,5) : ""}
                                     onChange={this.mudarValorDataCpf} />
                             </div>
                         </div>
