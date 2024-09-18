@@ -1,16 +1,51 @@
-.clientesCadastrados {
-}
-
 .informacoesDosClientes {
     display: flex;
     flex-direction: column;
     color: white;
+    margin-top: 2rem;
 }
 
 .botaoSelecionarClienteNaListaCliente {
     width: 10%;
 }
 
+.botaoSelecionarClienteNaListaCliente{
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: underline;
+}
+
+.botaoSelecionarClienteNaListaCliente:hover {
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    color: #E0C524;
+    font-size: 1.1rem;
+    text-decoration: underline;
+}
+
+.botaoExcluirCliente {
+    width: 4%;
+    font-size: 1.1rem;
+    background-color: #E0C524;
+    border: none;
+    color: white;
+}
+
+.botaoExcluirCliente:hover {
+    width: 4%;
+    font-size: 1.1rem;
+    background-color: #BEA302;
+    border: none;
+    color: white;
+}
+
 li {
     list-style-type: none;
+    font-size: 1.1rem;
 }

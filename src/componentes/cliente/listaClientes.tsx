@@ -71,7 +71,7 @@ export default class ListaCliente extends Component<{}, state> {
                     </button>
                     <span>Nome Social: {c.nomeSocial} </span>
                     <span>CPF: {c.getCpf.getValor}</span>
-                    <button onClick={() => this.excluirCliente(c.nome)}>Excluir</button>
+                    <button className="botaoExcluirCliente" onClick={() => this.excluirCliente(c.nome)}>Excluir</button>
                 </li>
             )
             return listaCliente

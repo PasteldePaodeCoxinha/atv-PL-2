@@ -77,12 +77,12 @@ label {
 }
 
 .containerBotaoCadastrarCliente button:hover {
-    background-color: #E0C524;
+    background-color: #BEA302;
     border: none;
     color: white;
-    padding: 1.1rem 2.1rem;
+    padding: 1rem 2rem;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.5s;
 }
