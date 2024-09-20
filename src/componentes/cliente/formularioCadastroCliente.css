@@ -54,14 +54,6 @@ label {
 }
 
 .inputClienteForms:focus {
-    color: white;
-    width: 12rem;
-    font-size: 1.2rem;
-    background: transparent;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-color: #E0C524;
     outline: none;
 }
 

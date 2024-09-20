@@ -1,0 +1,27 @@
+li {
+    color: white
+}
+
+.menuAddTel{
+    text-align: start;
+    justify-content: space-around;
+    display: inline-flex;
+
+}
+
+.menuAddTel input{
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: #E0C524;
+    color: white;
+}
+
+.menuAddTel input:focus {
+    outline: none;
+}
+
+.inputAddNovoTelDDD{
+    width: 8%;
+}
