@@ -179,7 +179,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                 <form className="formularioCliente" onSubmit={this.clienteCriarAdicionar}>
 
                     <div className="linhaFormularioCadastroCliente">
-
                         <div className="campoInputTextoCadastroCliente">
                             <input type="text"
                                 className="inputClienteForms"
@@ -195,7 +194,9 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 value={this.state.nomeSocial}
                                 onChange={this.mudarValorNomeSocial} />
                         </div>
+                    </div>
 
+                    <div className="linhaFormularioCadastroCliente">
                         <div className="campoInputTextoCadastroCliente">
                             <input type="email"
                                 className="inputClienteForms"
@@ -203,11 +204,9 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 value={this.state.email}
                                 onChange={this.mudarValorEmail} />
                         </div>
-
                     </div>
 
                     <div className="linhaFormularioCadastroCliente">
-
                         <div className="inputsComDataFormsCliente">
 
                             <div className="campoInputTextoCadastroCliente">
@@ -219,16 +218,16 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                             </div>
 
                             <div className="campoInputTextoCadastroCliente">
-                                <input type="text"
-                                    onFocus={e => e.target.type = "date"}
-                                    onBlur={e => e.target.type = "text"}
+                                <input type="date"
                                     className="inputClienteForms"
-                                    placeholder="Data CPF"
-                                    value={this.state.dataCpf ? this.state.dataCpf.substring(6,8) + "/" +this.state.dataCpf.substring(0,5) : ""}
+                                    placeholder="dd/mm/yyyy"
+                                    value={this.state.dataCpf}
                                     onChange={this.mudarValorDataCpf} />
                             </div>
                         </div>
+                    </div>
 
+                    <div className="linhaFormularioCadastroCliente">
                         <div className="inputsComDataFormsCliente">
 
                             <div className="campoInputTextoCadastroCliente">
@@ -240,17 +239,14 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                             </div>
 
                             <div className="campoInputTextoCadastroCliente">
-                                <input type="text"
-                                    placeholder="Data RG"
-                                    onFocus={e => e.target.type = "date"}
-                                    onBlur={e => e.target.type = "text"}
+                                <input type="date"
+                                    placeholder="dd/mm/yyyy"
                                     className="inputClienteForms"
                                     value={this.state.dataRg}
                                     onChange={this.mudarValorDataRg} />
                             </div>
 
                         </div>
-
                     </div>
 
                     <div className="linhaFormularioCadastroCliente">

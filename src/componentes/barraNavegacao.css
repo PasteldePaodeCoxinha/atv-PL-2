@@ -1,11 +1,12 @@
 .barraDeNavegacao {
-    border-bottom: 0.1rem solid #E0C524
+    border-bottom: 0.1rem solid #E0C524;
+    margin-bottom: 0.7rem;
 }
 
 .containerDaBarraDeNavegacao {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     text-align: center;
 }
 
@@ -22,7 +23,7 @@
     color: white;
     transition: all 0.3s;
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .linkDaBarraDeNavegacao:hover {
