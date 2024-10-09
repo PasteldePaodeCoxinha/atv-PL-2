@@ -4,8 +4,7 @@ import "./barraNavegacao.css"
 
 type props = {
     botoes: string[],
-    seletorView: Function,
-    mensagem: string
+    seletorView: Function
 }
 
 export default class BarraNavegacao extends Component<props> {
@@ -33,7 +32,6 @@ export default class BarraNavegacao extends Component<props> {
             <>
                 <nav className="barraDeNavegacao">
                     <div className="containerDaBarraDeNavegacao">
-                        <span className="logoPetLovers">{this.props.mensagem}</span>
                         <div className="todosLinksDaBarraNavegacao" id="navbarNav">
                             <ul className="containerDaBarraDeNavegacao">
                                 {this.gerarListaBotoes()}

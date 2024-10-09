@@ -33,8 +33,7 @@ export default class Roteador extends Component<{}, state> {
     render() {
         let barraNavegacao = <BarraNavegacao
             seletorView={this.selecionarView}
-            botoes={['Clientes', 'Pets', 'Produtos', 'Serviços']}
-            mensagem="PetLovers" />
+            botoes={['Clientes', 'Pets', 'Produtos', 'Serviços']} />
 
         if (this.state.tela === 'Clientes') {
             return (
