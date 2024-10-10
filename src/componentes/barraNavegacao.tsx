@@ -31,12 +31,10 @@ export default class BarraNavegacao extends Component<props> {
         return (
             <>
                 <nav className="barraDeNavegacao">
-                    <div className="containerDaBarraDeNavegacao">
-                        <div className="todosLinksDaBarraNavegacao" id="navbarNav">
-                            <ul className="containerDaBarraDeNavegacao">
-                                {this.gerarListaBotoes()}
-                            </ul>
-                        </div>
+                    <div>
+                        <ul className="containerDaBarraDeNavegacao">
+                            {this.gerarListaBotoes()}
+                        </ul>
                     </div>
                 </nav>
             </>

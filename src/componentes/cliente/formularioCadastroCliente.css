@@ -1,25 +1,38 @@
 .containerFormularioCliente {
     margin-top: 1rem;
-    display: grid;
+    display: flex;
     width: 100%;
 }
 
 .formularioCliente {
     display: grid;
-    padding: 0% 40%;
     width: 100%;
+    justify-content: center;
 }
 
 .linhaFormularioCadastroCliente {
     display: inline-flex;
     margin-bottom: 4rem;
-    gap: 3rem;
+    justify-content: start;
+    width: 100%;
+    gap: 1.7rem;
 }
 
-.inputClienteForms {
+.inputClienteForms[type=text], .inputClienteForms[type=email] {
     color: white;
     font-size: 1.2rem;
-    width: 72%;
+    width: 100%;
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: #E0C524;
+}
+
+.inputClienteForms[type=date] {
+    color: white;
+    font-size: 1.2rem;
+    width: 100%;
     background: transparent;
     border-top: none;
     border-right: none;
@@ -30,29 +43,18 @@
 .inputsComDataFormsCliente {
     display: inline-flex;
     justify-content: space-between;
-    border: 0;
-    outline: 0;
-    bottom: 0;
-}
-
-.campoInputTextoCadastroCliente label,
-input {
-    display: block;
-}
-
-.multiplosInputsCadastroCliente {
-    display: block;
-}
-
-label {
-    color: white;
+    gap: 1.7rem;
 }
 
 .inputClienteForms:focus {
     outline: none;
 }
 
-.containerBotaoCadastrarCliente button {
+.containerBotaoCadastrarCliente{
+    text-align: center;
+}
+
+.botaoCadastrarCliente {
     background-color: #E0C524;
     border: none;
     color: white;
@@ -64,7 +66,7 @@ label {
     box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.containerBotaoCadastrarCliente button:hover {
+.botaoCadastrarCliente:hover {
     background-color: #BEA302;
     border: none;
     color: white;

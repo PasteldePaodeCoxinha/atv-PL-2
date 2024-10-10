@@ -218,9 +218,10 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                             </div>
 
                             <div className="campoInputTextoCadastroCliente">
-                                <input type="date"
+                                <input type="text"
+                                    onFocus={e => e.target.type = "date"}
                                     className="inputClienteForms"
-                                    placeholder="dd/mm/yyyy"
+                                    placeholder="Data CPF"
                                     value={this.state.dataCpf}
                                     onChange={this.mudarValorDataCpf} />
                             </div>
@@ -239,8 +240,9 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                             </div>
 
                             <div className="campoInputTextoCadastroCliente">
-                                <input type="date"
-                                    placeholder="dd/mm/yyyy"
+                                <input type="text"
+                                    onFocus={e => e.target.type = "date"}
+                                    placeholder="Data RG"
                                     className="inputClienteForms"
                                     value={this.state.dataRg}
                                     onChange={this.mudarValorDataRg} />

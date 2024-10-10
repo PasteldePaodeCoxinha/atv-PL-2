@@ -1,4 +1,5 @@
 .barraDeNavegacao {
+    width: 100%;
     border-bottom: 0.1rem solid #E0C524;
     margin-bottom: 0.7rem;
 }
@@ -6,13 +7,11 @@
 .containerDaBarraDeNavegacao {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    text-align: center;
+    gap: 2.1rem;
 }
 
 .botoesDaBarraDeNavegacao {
     display: inline-block;
-    margin: 0 2rem;
 }
 
 .logoPetLovers {
