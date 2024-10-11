@@ -12,38 +12,33 @@
 
 .linhaFormularioCadastroCliente {
     display: inline-flex;
-    margin-bottom: 4rem;
+    margin-bottom: 2.7rem;
     justify-content: start;
     width: 100%;
-    gap: 1.7rem;
+    gap: 1.4rem;
 }
 
 .inputClienteForms[type=text], .inputClienteForms[type=email] {
-    color: white;
-    font-size: 1.2rem;
-    width: 100%;
+    font-size: 0.7rem;
+    width: 40%;
     background: transparent;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-color: #E0C524;
+    border-width: 2px;
+    border-color: #000000;
+    box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .inputClienteForms[type=date] {
-    color: white;
-    font-size: 1.2rem;
-    width: 100%;
+    font-size: 0.7rem;
+    width: 60%;
     background: transparent;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-color: #E0C524;
+    border-width: 2px;
+    border-color: #000000;
+    box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .inputsComDataFormsCliente {
     display: inline-flex;
     justify-content: space-between;
-    gap: 1.7rem;
 }
 
 .inputClienteForms:focus {
@@ -55,24 +50,81 @@
 }
 
 .botaoCadastrarCliente {
-    background-color: #E0C524;
-    border: none;
-    color: white;
-    padding: 1rem 2rem;
+    background-color: transparent;
+    color: #000000;
+    padding: 0.7rem 1.7rem;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 0.7rem;
     cursor: pointer;
     transition: all 0.5s;
-    box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .botaoCadastrarCliente:hover {
-    background-color: #BEA302;
-    border: none;
-    color: white;
-    padding: 1rem 2rem;
+    background-color: #eeeeee;
+    color: #000000;
+    padding: 0.7rem 1.7rem;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 0.7rem;
     cursor: pointer;
     transition: all 0.5s;
+    box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (min-width: 768px){
+
+    .inputsComDataFormsCliente {
+        display: inline-flex;
+        justify-content: space-between;
+        gap: 1.7rem;
+    }
+
+    .linhaFormularioCadastroCliente {
+        display: inline-flex;
+        margin-bottom: 4rem;
+        justify-content: start;
+        width: 100%;
+        gap: 1.7rem;
+    }
+
+    .inputClienteForms[type=text], .inputClienteForms[type=email] {
+        font-size: 1.2rem;
+        width: 100%;
+        background: transparent;
+        border-width: 2px;
+        border-color: #000000;
+        box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
+    }
+    
+    .inputClienteForms[type=date] {
+        font-size: 1.2rem;
+        width: 100%;
+        background: transparent;
+        border-width: 2px;
+        border-color: #000000;
+        box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .botaoCadastrarCliente {
+        background-color: transparent;
+        border-color: #000000;
+        color: #000000;
+        padding: 1rem 2rem;
+        text-align: center;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.5s;
+        box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
+    }
+    
+    .botaoCadastrarCliente:hover {
+        background-color: #eeeeee;
+        color: #000000;
+        padding: 1rem 2rem;
+        text-align: center;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.5s;
+        box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
+    }
 }

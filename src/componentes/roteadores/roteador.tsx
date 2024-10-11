@@ -18,10 +18,6 @@ export default class Roteador extends Component<{}, state> {
         this.selecionarView = this.selecionarView.bind(this)
     }
 
-    componentDidMount() {
-        document.body.style.backgroundColor = "#453E96"
-    }
-
     selecionarView(novaTela: string, evento: Event) {
         evento.preventDefault()
         console.log(novaTela);

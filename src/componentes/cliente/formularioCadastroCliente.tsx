@@ -179,94 +179,87 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                 <form className="formularioCliente" onSubmit={this.clienteCriarAdicionar}>
 
                     <div className="linhaFormularioCadastroCliente">
-                        <div className="campoInputTextoCadastroCliente">
-                            <input type="text"
-                                className="inputClienteForms"
-                                placeholder="Nome"
-                                value={this.state.nome}
-                                onChange={this.mudarValorNome} />
-                        </div>
 
-                        <div className="campoInputTextoCadastroCliente">
-                            <input type="text"
-                                className="inputClienteForms"
-                                placeholder="Nome social"
-                                value={this.state.nomeSocial}
-                                onChange={this.mudarValorNomeSocial} />
-                        </div>
+                        <input type="text"
+                            className="inputClienteForms"
+                            placeholder="Nome"
+                            value={this.state.nome}
+                            onChange={this.mudarValorNome} />
+
+
+
+                        <input type="text"
+                            className="inputClienteForms"
+                            placeholder="Nome social"
+                            value={this.state.nomeSocial}
+                            onChange={this.mudarValorNomeSocial} />
+
                     </div>
 
                     <div className="linhaFormularioCadastroCliente">
-                        <div className="campoInputTextoCadastroCliente">
-                            <input type="email"
+
+                        <input type="email"
+                            className="inputClienteForms"
+                            placeholder="E-mail"
+                            value={this.state.email}
+                            onChange={this.mudarValorEmail} />
+
+                    </div>
+
+                    <div className="linhaFormularioCadastroCliente">
+                        <div className="inputsComDataFormsCliente">
+
+                            <input type="text"
                                 className="inputClienteForms"
-                                placeholder="E-mail"
-                                value={this.state.email}
-                                onChange={this.mudarValorEmail} />
+                                placeholder="CPF"
+                                value={this.state.valorCpf}
+                                onChange={this.mudarValorCpf} />
+
+                            <input type="text"
+                                onFocus={e => e.target.type = "date"}
+                                className="inputClienteForms"
+                                placeholder="Data CPF"
+                                value={this.state.dataCpf}
+                                onChange={this.mudarValorDataCpf} />
+
                         </div>
                     </div>
 
                     <div className="linhaFormularioCadastroCliente">
                         <div className="inputsComDataFormsCliente">
 
-                            <div className="campoInputTextoCadastroCliente">
-                                <input type="text"
-                                    className="inputClienteForms"
-                                    placeholder="CPF"
-                                    value={this.state.valorCpf}
-                                    onChange={this.mudarValorCpf} />
-                            </div>
+                            <input type="text"
+                                className="inputClienteForms"
+                                placeholder="RG"
+                                value={this.state.valorRg}
+                                onChange={this.mudarValorRg} />
 
-                            <div className="campoInputTextoCadastroCliente">
-                                <input type="text"
-                                    onFocus={e => e.target.type = "date"}
-                                    className="inputClienteForms"
-                                    placeholder="Data CPF"
-                                    value={this.state.dataCpf}
-                                    onChange={this.mudarValorDataCpf} />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="linhaFormularioCadastroCliente">
-                        <div className="inputsComDataFormsCliente">
-
-                            <div className="campoInputTextoCadastroCliente">
-                                <input type="text"
-                                    className="inputClienteForms"
-                                    placeholder="RG"
-                                    value={this.state.valorRg}
-                                    onChange={this.mudarValorRg} />
-                            </div>
-
-                            <div className="campoInputTextoCadastroCliente">
-                                <input type="text"
-                                    onFocus={e => e.target.type = "date"}
-                                    placeholder="Data RG"
-                                    className="inputClienteForms"
-                                    value={this.state.dataRg}
-                                    onChange={this.mudarValorDataRg} />
-                            </div>
+                            <input type="text"
+                                onFocus={e => e.target.type = "date"}
+                                placeholder="Data RG"
+                                className="inputClienteForms"
+                                value={this.state.dataRg}
+                                onChange={this.mudarValorDataRg} />
 
                         </div>
                     </div>
 
                     <div className="linhaFormularioCadastroCliente">
-                        <div className="campoInputTextoCadastroCliente">
-                            <input type="text"
-                                className="inputClienteForms"
-                                placeholder="Telefone 1"
-                                value={this.state.telefone1}
-                                onChange={this.mudarValorTelefone1} />
-                        </div>
 
-                        <div className="campoInputTextoCadastroCliente">
-                            <input type="text"
-                                className="inputClienteForms"
-                                placeholder="Telefone 2"
-                                value={this.state.telefone2}
-                                onChange={this.mudarValorTelefone2} />
-                        </div>
+                        <input type="text"
+                            className="inputClienteForms"
+                            placeholder="Telefone 1"
+                            value={this.state.telefone1}
+                            onChange={this.mudarValorTelefone1} />
+
+
+
+                        <input type="text"
+                            className="inputClienteForms"
+                            placeholder="Telefone 2"
+                            value={this.state.telefone2}
+                            onChange={this.mudarValorTelefone2} />
+
                     </div>
 
                     <div className="containerBotaoCadastrarCliente">

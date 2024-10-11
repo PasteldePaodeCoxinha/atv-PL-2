@@ -1,41 +1,50 @@
 .barraDeNavegacao {
     width: 100%;
-    border-bottom: 0.1rem solid #E0C524;
+    border-bottom: 0.1rem solid #000000;
     margin-bottom: 0.7rem;
 }
 
 .containerDaBarraDeNavegacao {
     display: flex;
     justify-content: center;
-    gap: 2.1rem;
+    gap: 1.7rem;
 }
 
 .botoesDaBarraDeNavegacao {
     display: inline-block;
 }
 
-.logoPetLovers {
-    color: white;
-}
-
 .linkDaBarraDeNavegacao {
-    color: white;
+    color: #000000;
     transition: all 0.3s;
     text-decoration: none;
     font-size: 0.8rem;
 }
 
 .linkDaBarraDeNavegacao:hover {
-    color: #E0C524;
+    color: #444444;
     transition: all 0.3s;
     text-decoration: none;
 }
 
 @media only screen and (min-width: 768px) {
+
+    .containerDaBarraDeNavegacao {
+        display: flex;
+        justify-content: center;
+        gap: 2.1rem;
+    }
+
     .linkDaBarraDeNavegacao {
-        color: white;
+        color: #000000;
         transition: all 0.3s;
         text-decoration: none;
         font-size: 1.2rem;
+    }
+
+    .linkDaBarraDeNavegacao:hover {
+        color: #444444;
+        transition: all 0.3s;
+        text-decoration: none;
     }
 }
