@@ -2,6 +2,7 @@
     margin-top: 1rem;
     display: flex;
     width: 100%;
+    text-align: center;
 }
 
 .formularioCliente {
@@ -23,7 +24,7 @@
     width: 40%;
     background: transparent;
     border-width: 2px;
-    border-color: #000000;
+    border-color: #E0C524;
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -32,7 +33,7 @@
     width: 60%;
     background: transparent;
     border-width: 2px;
-    border-color: #000000;
+    border-color: #E0C524;
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -50,7 +51,7 @@
 }
 
 .botaoCadastrarCliente {
-    background-color: transparent;
+    background-color: #453E96;
     color: #000000;
     padding: 0.7rem 1.7rem;
     text-align: center;
@@ -61,7 +62,7 @@
 }
 
 .botaoCadastrarCliente:hover {
-    background-color: #eeeeee;
+    background-color: #6760B8;
     color: #000000;
     padding: 0.7rem 1.7rem;
     text-align: center;
@@ -92,7 +93,7 @@
         width: 100%;
         background: transparent;
         border-width: 2px;
-        border-color: #000000;
+        border-color: #E0C524;
         box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
     }
     
@@ -101,12 +102,12 @@
         width: 100%;
         background: transparent;
         border-width: 2px;
-        border-color: #000000;
+        border-color: #E0C524;
         box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
     }
 
     .botaoCadastrarCliente {
-        background-color: transparent;
+        background-color: #453E96;
         border-color: #000000;
         color: #000000;
         padding: 1rem 2rem;
@@ -118,7 +119,7 @@
     }
     
     .botaoCadastrarCliente:hover {
-        background-color: #eeeeee;
+        background-color: #6760B8;
         color: #000000;
         padding: 1rem 2rem;
         text-align: center;
