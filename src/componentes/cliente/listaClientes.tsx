@@ -60,19 +60,14 @@ export default class ListaCliente extends Component<{}, state> {
         if (this.state.clientes.length <= 0) {
             return <></>
         } else {
-            let listaCliente = this.state.clientes.map(c =>
-                <li className="informacoesDosClientes">
-                    <button
-                        onClick={() => {
-                            this.pegarUmCliente(c.nome)
-                        }}
-                        className="botaoSelecionarClienteNaListaCliente">
-                        Nome: {c.nome}
-                    </button>
-                    <span>Nome Social: {c.nomeSocial} </span>
-                    <span>CPF: {c.getCpf.getValor}</span>
-                    <button className="botaoExcluirCliente" onClick={() => this.excluirCliente(c.nome)}>Excluir</button>
-                </li>
+            let listaCliente = this.state.clientes.map((c, i) =>
+                <tr className="linhaTabelaClientes" key={i} onClick={() => this.pegarUmCliente(c.nome)
+                }>
+                    <td>{c.nome}</td>
+                    <td>{c.nomeSocial}</td>
+                    <td>{c.getCpf.getDataEmissao.toISOString().split("T")[0]} {c.getCpf.getValor}</td>
+                    <td><button className="botaExcluirCliente" onClick={() => this.excluirCliente(c.nome)}>Excluir</button></td>
+                </tr>
             )
             return listaCliente
         }
@@ -82,9 +77,19 @@ export default class ListaCliente extends Component<{}, state> {
         if (this.state.cliente === undefined) {
             return (
                 <div className="clientesCadastrados">
-                    <ul className="listaDeClientes">
-                        {this.gerarListaCliente()}
-                    </ul>
+                    <table className="tabelaClientes">
+                        <thead>
+                            <tr className="headerTabelaClientes">
+                                <th>Nome</th>
+                                <th>Nome Social</th>
+                                <th>CPF</th>
+                                <th>Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.gerarListaCliente()}
+                        </tbody>
+                    </table>
                 </div>
             )
         } else {
