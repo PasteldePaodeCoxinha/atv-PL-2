@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./roteadorCliente.css"
 import BarraNavegacao from "../barraNavegacao";
 import ListaCliente from "../cliente/listaClientes";
 import FormularioCadastroCliente from "../cliente/formularioCadastroCliente";
@@ -36,17 +37,17 @@ export default class RoteadorCliente extends Component<props, state> {
             botoes={['Lista', 'Cadastro']} />
         if (this.state.tela === 'Lista') {
             return (
-                <>
+                <div className="paginaListaCliente">
                     {barraNavegacao}
-                    <ListaCliente/>
-                </>
+                    <ListaCliente />
+                </div>
             )
         } else if (this.state.tela === 'Cadastro') {
             return (
-                <>
+                <div className="paginaCadastroCliente">
                     {barraNavegacao}
                     <FormularioCadastroCliente clientes={this.props.clientes} />
-                </>
+                </div>
             )
         }
     }

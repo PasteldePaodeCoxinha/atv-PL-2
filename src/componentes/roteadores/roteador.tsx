@@ -18,6 +18,10 @@ export default class Roteador extends Component<{}, state> {
         this.selecionarView = this.selecionarView.bind(this)
     }
 
+    componentDidMount(): void {
+        document.body.style.backgroundColor = "#2513EB"
+    }
+
     selecionarView(novaTela: string, evento: Event) {
         evento.preventDefault()
         console.log(novaTela);
@@ -35,7 +39,7 @@ export default class Roteador extends Component<{}, state> {
             return (
                 <>
                     {barraNavegacao}
-                    <RoteadorCliente clientes={this.state.empresa.getClientes}/>
+                    <RoteadorCliente clientes={this.state.empresa.getClientes} />
                 </>
             )
         } else if (this.state.tela === 'Pets') {

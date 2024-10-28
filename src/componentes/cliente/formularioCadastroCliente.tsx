@@ -217,8 +217,10 @@ export default class FormularioCadastroCliente extends Component<props, state> {
 
                             <input type="text"
                                 onFocus={e => e.target.type = "date"}
+                                onBlur={e => e.target.type = "text"}
                                 className="inputClienteForms"
                                 placeholder="Data CPF"
+                                datatype=""
                                 value={this.state.dataCpf}
                                 onChange={this.mudarValorDataCpf} />
 
@@ -236,6 +238,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
 
                             <input type="text"
                                 onFocus={e => e.target.type = "date"}
+                                onBlur={e => e.target.type = "text"}
                                 placeholder="Data RG"
                                 className="inputClienteForms"
                                 value={this.state.dataRg}

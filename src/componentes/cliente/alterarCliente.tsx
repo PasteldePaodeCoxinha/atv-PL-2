@@ -35,13 +35,13 @@ export default class AlterarCliente extends Component<props, state> {
     }
 
     menuAdicionarTelefone() {
-            return (
-                <div className="menuAddTel">
-                    <input type="text" placeholder="DDD" className="inputAddNovoTelDDD" onChange={e => this.setState({novoDdd: e.target.value})}/>
-                    <input type="text" placeholder="Telefone" className="inputAddNovoTelNum" onChange={e => this.setState({novoTel: e.target.value})}/>
-                    <button className="botaoConfirmarTel" onClick={this.adicionarTelefone}>Confirmar</button>
-                </div>
-            )
+        return (
+            <div className="menuAddTel">
+                <input type="text" placeholder="DDD" className="inputAddNovoTelDDD" onChange={e => this.setState({ novoDdd: e.target.value })} />
+                <input type="text" placeholder="Telefone" className="inputAddNovoTelNum" onChange={e => this.setState({ novoTel: e.target.value })} />
+                <button className="botaoConfirmarTel" onClick={this.adicionarTelefone}>Confirmar</button>
+            </div>
+        )
     }
 
     render() {
@@ -52,7 +52,7 @@ export default class AlterarCliente extends Component<props, state> {
             <li>Email: {this.state.cliente.getEmail}</li>
 
             <li>Valor do CPF: {this.state.cliente.getCpf.getValor}</li>
-            <li>Data de emissão do CPF: {this.state.cliente.getCpf.getDataEmissao.toISOString().substring(0,10)}</li>
+            <li>Data de emissão do CPF: {this.state.cliente.getCpf.getDataEmissao.toISOString().substring(0, 10)}</li>
 
             <li>Valor do RG: {this.state.cliente.getRgs[0].getValor}</li>
             <li>Data de emissão do RG: {this.state.cliente.getRgs[0].getDataEmissao.toUTCString()}</li>
@@ -73,9 +73,9 @@ export default class AlterarCliente extends Component<props, state> {
                 </li>
                 :
                 this.state.menuTel ?
-                this.menuAdicionarTelefone()
-                : 
-                <button className="botaoAddTel" onClick={() => this.setState({menuTel: !this.state.menuTel})}>Adicionar telefone</button>
+                    this.menuAdicionarTelefone()
+                    :
+                    <button className="botaoAddTel" onClick={() => this.setState({ menuTel: !this.state.menuTel })}>Adicionar telefone</button>
             }
 
         </div>)

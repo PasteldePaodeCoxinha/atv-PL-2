@@ -74,30 +74,36 @@ export default class ListaCliente extends Component<{}, state> {
     }
 
     render() {
-        if (this.state.cliente === undefined) {
-            return (
-                <div className="clientesCadastrados">
-                    <table className="tabelaClientes">
-                        <thead>
-                            <tr className="headerTabelaClientes">
-                                <th>Nome</th>
-                                <th>Nome Social</th>
-                                <th>CPF</th>
-                                <th>Excluir</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.gerarListaCliente()}
-                        </tbody>
-                    </table>
-                </div>
-            )
-        } else {
-            return (
-                <>
-                    <AlterarCliente cliente={this.state.cliente} />
-                </>
-            )
-        }
+        return (
+            <div className="containerListaCliente">
+                {this.state.cliente === undefined ? (
+                    <div className="clientesCadastrados">
+                        <table className="tabelaClientes">
+                            <thead>
+                                <tr className="headerTabelaClientes">
+                                    <th>Nome</th>
+                                    <th>Nome Social</th>
+                                    <th>CPF</th>
+                                    <th>Excluir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.gerarListaCliente()}
+                            </tbody>
+                        </table>
+                    </div>
+
+                ) : (
+
+                    <>
+                        <button className="botaVoltarListagemCliente" onClick={() => { this.setState({ cliente: undefined }) }}>
+                            Voltar
+                        </button>
+                        <AlterarCliente cliente={this.state.cliente} />
+                    </>
+
+                )}
+            </div>
+        )
     }
 }

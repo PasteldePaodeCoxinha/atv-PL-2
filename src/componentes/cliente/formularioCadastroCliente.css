@@ -2,13 +2,16 @@
     margin-top: 1rem;
     display: flex;
     width: 100%;
-    text-align: center;
+    justify-content: center;
 }
 
 .formularioCliente {
+    background-color: #dddddd;
     display: grid;
-    width: 100%;
     justify-content: center;
+    padding: 3%;
+    border-radius: 10px;
+    box-shadow: 0.2rem 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .linhaFormularioCadastroCliente {
@@ -19,12 +22,13 @@
     gap: 1.4rem;
 }
 
-.inputClienteForms[type=text], .inputClienteForms[type=email] {
+.inputClienteForms[type=text],
+.inputClienteForms[type=email] {
     font-size: 0.7rem;
     width: 40%;
     background: transparent;
     border-width: 2px;
-    border-color: #E0C524;
+    border-color: #453E96;
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -33,7 +37,7 @@
     width: 60%;
     background: transparent;
     border-width: 2px;
-    border-color: #E0C524;
+    border-color: #453E96;
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -46,12 +50,12 @@
     outline: none;
 }
 
-.containerBotaoCadastrarCliente{
+.containerBotaoCadastrarCliente {
     text-align: center;
 }
 
 .botaoCadastrarCliente {
-    background-color: #453E96;
+    background-color: #E0C524;
     color: #000000;
     padding: 0.7rem 1.7rem;
     text-align: center;
@@ -62,7 +66,7 @@
 }
 
 .botaoCadastrarCliente:hover {
-    background-color: #6760B8;
+    background-color: #F2E746;
     color: #000000;
     padding: 0.7rem 1.7rem;
     text-align: center;
@@ -72,7 +76,7 @@
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 768px) {
 
     .inputsComDataFormsCliente {
         display: inline-flex;
@@ -88,26 +92,27 @@
         gap: 1.7rem;
     }
 
-    .inputClienteForms[type=text], .inputClienteForms[type=email] {
+    .inputClienteForms[type=text],
+    .inputClienteForms[type=email] {
         font-size: 1.2rem;
         width: 100%;
         background: transparent;
         border-width: 2px;
-        border-color: #E0C524;
+        border-color: #453E96;
         box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
     }
-    
+
     .inputClienteForms[type=date] {
         font-size: 1.2rem;
         width: 100%;
         background: transparent;
         border-width: 2px;
-        border-color: #E0C524;
+        border-color: #453E96;
         box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
     }
 
     .botaoCadastrarCliente {
-        background-color: #453E96;
+        background-color: #E0C524;
         border-color: #000000;
         color: #000000;
         padding: 1rem 2rem;
@@ -117,9 +122,9 @@
         transition: all 0.3s;
         box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
     }
-    
+
     .botaoCadastrarCliente:hover {
-        background-color: #6760B8;
+        background-color: #F2E746;
         color: #000000;
         padding: 1rem 2rem;
         text-align: center;

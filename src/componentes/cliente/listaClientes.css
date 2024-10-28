@@ -1,18 +1,29 @@
-.clientesCadastrados{
+.containerListaCliente{
+    background-color: #dddddd;
+    display: flex;
+    justify-content: center;
+    padding: 3%;
+    width: 64%;
+    border-radius: 10px;
+    box-shadow: 0.2rem 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+}
+
+.clientesCadastrados {
     width: 100%;
 }
 
-.tabelaClientes{
+.tabelaClientes {
     width: 100%;
     border-collapse: collapse;
+    box-shadow: 0.1rem 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
-.tabelaClientes tr:nth-child(even){
-    background-color: #eeeeee;
+.tabelaClientes tr:nth-child(even) {
+    background-color: #cccccc;
 }
 
-.tabelaClientes tr:hover{
-    background-color: #dddddd;
+.tabelaClientes tr:hover {
+    background-color: #bbbbbb;
 }
 
 .tabelaClientes th {
@@ -24,3 +35,5 @@
 .tabelaClientes td {
     border: 2px solid black;
 }
+
+.botaVoltarListagemCliente {}
