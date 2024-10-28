@@ -59,4 +59,22 @@
     transition: all 0.2s;
 }
 
-/* .botaVoltarListagemCliente {} */
+.botaVoltarListagemCliente {
+    font-size: 1.1rem;
+    background: none;
+    border: none;
+    color: #2513EB;
+    text-decoration: underline;
+    z-index: 1;
+    transition: all 0.2s;
+}
+
+.botaVoltarListagemCliente:hover {
+    font-size: 1.1rem;
+    background: none;
+    border: none;
+    color: #1a117c;
+    text-decoration: underline;
+    z-index: 1;
+    transition: all 0.2s;
+}
