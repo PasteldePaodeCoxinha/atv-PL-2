@@ -1,6 +1,7 @@
-.containerListaCliente{
+.containerListaCliente {
     background-color: #dddddd;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     padding: 3%;
     width: 64%;
@@ -30,10 +31,32 @@
     text-align: left;
     border: 2px solid black;
     background-color: #E0C524;
+    font-size: 1.2rem;
 }
 
 .tabelaClientes td {
     border: 2px solid black;
+    font-size: 1.1rem;
 }
 
-.botaVoltarListagemCliente {}
+.botaExcluirCliente {
+    font-size: 1.1rem;
+    background: none;
+    border: none;
+    color: #2513EB;
+    text-decoration: underline;
+    z-index: 1;
+    transition: all 0.2s;
+}
+
+.botaExcluirCliente:hover {
+    font-size: 1.1rem;
+    background: none;
+    border: none;
+    color: #1a117c;
+    text-decoration: underline;
+    z-index: 1;
+    transition: all 0.2s;
+}
+
+/* .botaVoltarListagemCliente {} */

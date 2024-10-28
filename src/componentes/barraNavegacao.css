@@ -18,14 +18,14 @@
 
 .linkDaBarraDeNavegacao {
     color: #ffffff;
-    transition: all 0.3s;
+    transition: all 0.2s;
     text-decoration: none;
     font-size: 0.8rem;
 }
 
 .linkDaBarraDeNavegacao:hover {
-    color: #444444;
-    transition: all 0.3s;
+    color: #E0C524;
+    transition: all 0.2s;
     text-decoration: none;
 }
 
@@ -39,14 +39,14 @@
 
     .linkDaBarraDeNavegacao {
         color: #ffffff;
-        transition: all 0.3s;
+        transition: all 0.2s;
         text-decoration: none;
         font-size: 1.2rem;
     }
 
     .linkDaBarraDeNavegacao:hover {
-        color: #444444;
-        transition: all 0.3s;
+        color: #E0C524;
+        transition: all 0.2s;
         text-decoration: none;
     }
 }
