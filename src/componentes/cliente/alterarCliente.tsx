@@ -46,38 +46,39 @@ export default class AlterarCliente extends Component<props, state> {
 
     render() {
         return (<div className="informarcoesDeUmClienteNaLista">
-            <li>Nome: {this.state.cliente.nome}</li>
-            <li>Nome Social: {this.state.cliente.nomeSocial}</li>
+            <ul>
+                <li> <label htmlFor="">Nome:</label> <input type="text" value={this.state.cliente.nome} /></li>
+                <li><label htmlFor="">Nome Social:</label> <input type="text" value={this.state.cliente.nomeSocial} /> </li>
 
-            <li>Email: {this.state.cliente.getEmail}</li>
+                <li><label htmlFor="">Email:</label> <input type="text" value={this.state.cliente.getEmail} /> </li>
 
-            <li>Valor do CPF: {this.state.cliente.getCpf.getValor}</li>
-            <li>Data de emissão do CPF: {this.state.cliente.getCpf.getDataEmissao.toISOString().substring(0, 10)}</li>
+                <li><label htmlFor="">Valor do CPF:</label> <input type="text" value={this.state.cliente.getCpf.getValor} /></li>
+                <li><label htmlFor="">Data de emissão do CPF:</label> <input type="text" value={this.state.cliente.getCpf.getDataEmissao.toISOString().substring(0, 10)} /></li>
 
-            <li>Valor do RG: {this.state.cliente.getRgs[0].getValor}</li>
-            <li>Data de emissão do RG: {this.state.cliente.getRgs[0].getDataEmissao.toUTCString()}</li>
+                <li> <label htmlFor="">Valor do RG:</label> <input type="text" value={this.state.cliente.getRgs[0].getValor} /></li>
+                <li> <label htmlFor="">Data de emissão do RG:</label> <input type="text" value={this.state.cliente.getRgs[0].getDataEmissao.toISOString().substring(0, 10)} /></li>
 
-            <li>
-                <div>
-                    <span>1º Telefone: +{this.state.cliente.getTelefones[0].getDdd} {this.state.cliente.getTelefones[0].getNumero}</span>
-                    {this.state.cliente.getTelefones.length > 1 ? <button>Deletar telefone</button> : <></>}
-                </div>
-            </li>
-
-            {this.state.cliente.getTelefones[1] ?
                 <li>
                     <div>
-                        <span>2º Telefone: +{this.state.cliente.getTelefones[1].getDdd} {this.state.cliente.getTelefones[1].getNumero}</span>
-                        <button>Deletar telefone</button>
+                        <span>1º Telefone: +{this.state.cliente.getTelefones[0].getDdd} {this.state.cliente.getTelefones[0].getNumero}</span>
+                        {this.state.cliente.getTelefones.length > 1 ? <button>Deletar telefone</button> : <></>}
                     </div>
                 </li>
-                :
-                this.state.menuTel ?
-                    this.menuAdicionarTelefone()
-                    :
-                    <button className="botaoAddTel" onClick={() => this.setState({ menuTel: !this.state.menuTel })}>Adicionar telefone</button>
-            }
 
+                {this.state.cliente.getTelefones[1] ?
+                    <li>
+                        <div>
+                            <span>2º Telefone: +{this.state.cliente.getTelefones[1].getDdd} {this.state.cliente.getTelefones[1].getNumero}</span>
+                            <button>Deletar telefone</button>
+                        </div>
+                    </li>
+                    :
+                    this.state.menuTel ?
+                        this.menuAdicionarTelefone()
+                        :
+                        <button className="botaoAddTel" onClick={() => this.setState({ menuTel: !this.state.menuTel })}>Adicionar telefone</button>
+                }
+            </ul>
         </div>)
     }
 }

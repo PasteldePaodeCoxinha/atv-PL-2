@@ -67,6 +67,7 @@
     text-decoration: underline;
     z-index: 1;
     transition: all 0.2s;
+    width: 7%;
 }
 
 .botaVoltarListagemCliente:hover {
@@ -77,4 +78,5 @@
     text-decoration: underline;
     z-index: 1;
     transition: all 0.2s;
+    width: 7%;
 }
