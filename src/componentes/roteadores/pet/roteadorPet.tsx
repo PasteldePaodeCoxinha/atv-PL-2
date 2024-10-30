@@ -1,9 +1,9 @@
 import { Component } from "react";
 import "./roteadorCliente.css"
-import BarraNavegacao from "../barraNavegacao";
-import ListaCliente from "../cliente/listaClientes";
-import FormularioCadastroCliente from "../cliente/formularioCadastroCliente";
-import Cliente from "../../modelo/cliente";
+import BarraNavegacao from "../../barraNavegacao";
+import FormularioCadastroCliente from "../../cliente/forms/formularioCadastroCliente";
+import Cliente from "../../../modelo/cliente";
+import ListaCliente from "../../cliente/lista/listaClientes";
 
 type props = {
     clientes: Array<Cliente>
@@ -14,7 +14,7 @@ type state = {
 
 }
 
-export default class RoteadorCliente extends Component<props, state> {
+export default class RoteadorPet extends Component<props, state> {
     constructor(props: props | Readonly<props>) {
         super(props)
         this.state = {
@@ -37,14 +37,14 @@ export default class RoteadorCliente extends Component<props, state> {
             botoes={['Lista', 'Cadastro']} />
         if (this.state.tela === 'Lista') {
             return (
-                <div className="paginaListaCliente">
+                <div className="paginaListaPet">
                     {barraNavegacao}
                     <ListaCliente />
                 </div>
             )
         } else if (this.state.tela === 'Cadastro') {
             return (
-                <div className="paginaCadastroCliente">
+                <div className="paginaCadastroPet">
                     {barraNavegacao}
                     <FormularioCadastroCliente clientes={this.props.clientes} />
                 </div>

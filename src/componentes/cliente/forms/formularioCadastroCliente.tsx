@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Component } from "react";
-import Cliente from "../../modelo/cliente";
-import CPF from "../../modelo/cpf";
-import RG from "../../modelo/rg";
-import Telefone from "../../modelo/telefone";
+import Cliente from "../../../modelo/cliente";
+import CPF from "../../../modelo/cpf";
+import RG from "../../../modelo/rg";
+import Telefone from "../../../modelo/telefone";
 import "./formularioCadastroCliente.css"
 
 type props = {

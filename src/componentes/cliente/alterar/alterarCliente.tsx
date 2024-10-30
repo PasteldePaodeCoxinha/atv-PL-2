@@ -1,7 +1,7 @@
 import { Component } from "react";
-import Cliente from "../../modelo/cliente";
+import Cliente from "../../../modelo/cliente";
 import "./alterarCliente.css"
-import Telefone from "../../modelo/telefone";
+import Telefone from "../../../modelo/telefone";
 
 type props = {
     cliente: Cliente

@@ -1,7 +1,8 @@
 import { Component } from "react";
-import BarraNavegacao from "../barraNavegacao";
-import RoteadorCliente from "./roteadorCliente";
-import Empresa from "../../modelo/empresa";
+import Empresa from "../../../modelo/empresa";
+import BarraNavegacao from "../../barraNavegacao";
+import RoteadorCliente from "../cliente/roteadorCliente";
+
 
 type state = {
     tela: string
@@ -44,10 +45,10 @@ export default class Roteador extends Component<{}, state> {
             )
         } else if (this.state.tela === 'Pets') {
             return (
-                <div className="backgroundDoSite">
+                <>
                     {barraNavegacao}
                     <h1>PEIXE</h1>
-                </div>
+                </>
             )
         }
     }

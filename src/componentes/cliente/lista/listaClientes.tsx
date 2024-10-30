@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import "./listaClientes.css"
-import Cliente from "../../modelo/cliente";
-import AlterarCliente from "./alterarCliente";
-import CPF from "../../modelo/cpf";
-import RG from "../../modelo/rg";
-import Telefone from "../../modelo/telefone";
+import Cliente from "../../../modelo/cliente";
+import CPF from "../../../modelo/cpf";
+import RG from "../../../modelo/rg";
+import Telefone from "../../../modelo/telefone";
+import AlterarCliente from "../alterar/alterarCliente";
+
 
 type state = {
     clientes: Array<Cliente>

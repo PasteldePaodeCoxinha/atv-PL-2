@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Roteador from './componentes/roteadores/roteador';
+import Roteador from './componentes/roteadores/principal/roteador';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
