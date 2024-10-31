@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./listaPets.css"
 import Cliente from "../../../modelo/cliente";
 import Pet from "../../../modelo/pet";
+import AlterarPet from "../alterar/alterarPet";
 
 
 type props = {
@@ -114,10 +115,11 @@ export default class ListaPet extends Component<props, state> {
                     </>
                 ) : (
                     <>
-                        <button className="botaVoltarListagemCliente" onClick={() => { this.setState({ cliente: undefined }) }}>
+                        <button className="botaVoltarListagemCliente" onClick={() => { this.setState({ pet: undefined }) }}>
                             Voltar
                         </button>
-                        <h1>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+
+                        <AlterarPet pet={this.state.pet} />
                     </>
                 )
 
