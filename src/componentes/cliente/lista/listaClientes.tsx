@@ -7,6 +7,9 @@ import RG from "../../../modelo/rg";
 import Telefone from "../../../modelo/telefone";
 import AlterarCliente from "../alterar/alterarCliente";
 
+type props = {
+    clientes: Array<Cliente>
+}
 
 type state = {
     clientes: Array<Cliente>
@@ -17,13 +20,11 @@ type state = {
     telefone: string
 }
 
-export default class ListaCliente extends Component<{}, state> {
-    constructor(props: {}) {
+export default class ListaCliente extends Component<props, state> {
+    constructor(props: props | Readonly<props>) {
         super(props)
         this.state = {
-            clientes: [new Cliente("a", "a", "a@email.com", new CPF("123", new Date()), [new RG("147", new Date())], [new Telefone("12", "159")]),
-            new Cliente("b", "b", "b@email.com", new CPF("456", new Date()), [new RG("258", new Date())], [new Telefone("12", "348")]),
-            new Cliente("c", "c", "c@email.com", new CPF("789", new Date()), [new RG("369", new Date())], [new Telefone("12", "267")])],
+            clientes: props.clientes,
             cliente: undefined,
             nome: "",
             nomeSocial: "",

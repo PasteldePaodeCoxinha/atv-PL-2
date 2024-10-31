@@ -18,7 +18,7 @@ export default class RoteadorCliente extends Component<props, state> {
     constructor(props: props | Readonly<props>) {
         super(props)
         this.state = {
-            tela: 'Lista'
+            tela: 'Cadastro'
         }
         this.selecionarView = this.selecionarView.bind(this)
     }
@@ -39,7 +39,7 @@ export default class RoteadorCliente extends Component<props, state> {
             return (
                 <div className="paginaListaCliente">
                     {barraNavegacao}
-                    <ListaCliente />
+                    <ListaCliente clientes={this.props.clientes}/>
                 </div>
             )
         } else if (this.state.tela === 'Cadastro') {
