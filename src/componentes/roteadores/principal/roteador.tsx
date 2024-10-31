@@ -8,6 +8,8 @@ import BarraNavegacao from "../../barraNavegacao";
 import RoteadorCliente from "../cliente/roteadorCliente";
 import RoteadorPet from "../pet/roteadorPet";
 import Pet from "../../../modelo/pet";
+import Produto from "../../../modelo/produto";
+import RoteadorProduto from "../produto/roteadorProduto";
 
 type state = {
     tela: string
@@ -33,15 +35,18 @@ export default class Roteador extends Component<{}, state> {
         const petC = [new Pet("da", "cachorro", "borzoi", "m", "grande"), new Pet("de", "gato", "preto e branco", "f", "pequeno"), new Pet("ci", "hamster", "naosei", "f", "grande")]
 
         const clientes = (
-        [new Cliente("a", "a", "a@email.com", new CPF("123", new Date()), [new RG("147", new Date())], [new Telefone("12", "159")]),
-        new Cliente("b", "b", "b@email.com", new CPF("456", new Date()), [new RG("258", new Date())], [new Telefone("12", "348")]),
-        new Cliente("c", "c", "c@email.com", new CPF("789", new Date()), [new RG("369", new Date())], [new Telefone("12", "267")])])
+            [new Cliente("a", "a", "a@email.com", new CPF("123", new Date()), [new RG("147", new Date())], [new Telefone("12", "159")]),
+            new Cliente("b", "b", "b@email.com", new CPF("456", new Date()), [new RG("258", new Date())], [new Telefone("12", "348")]),
+            new Cliente("c", "c", "c@email.com", new CPF("789", new Date()), [new RG("369", new Date())], [new Telefone("12", "267")])])
 
         clientes[0].setPets = petA
         clientes[1].setPets = petB
         clientes[2].setPets = petC
 
+        const produtos = [new Produto("shampoo", 50.00), new Produto("coleira", 69.00), new Produto("bola", 4.57)]
+
         empresaAtual.setClientes = clientes
+        empresaAtual.setProdutos = produtos
 
         this.setState({
             empresa: empresaAtual
@@ -73,6 +78,13 @@ export default class Roteador extends Component<{}, state> {
                 <>
                     {barraNavegacao}
                     <RoteadorPet clientes={this.state.empresa.getClientes} />
+                </>
+            )
+        } else if (this.state.tela === 'Produtos') {
+            return (
+                <>
+                    {barraNavegacao}
+                    <RoteadorProduto produtos={this.state.empresa.getProdutos} />
                 </>
             )
         }
