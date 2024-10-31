@@ -43,7 +43,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
             telefone1: "",
             telefone2: "",
             avisos: ""
-
         }
         this.mudarValorNome = this.mudarValorNome.bind(this)
         this.mudarValorNomeSocial = this.mudarValorNomeSocial.bind(this)
