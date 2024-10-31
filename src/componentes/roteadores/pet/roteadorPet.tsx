@@ -3,6 +3,7 @@ import "./roteadorPet.css"
 import BarraNavegacao from "../../barraNavegacao";
 import Cliente from "../../../modelo/cliente";
 import FormularioCadastroPet from "../../pet/forms/formularioCadastroPet";
+import ListaPet from "../../pet/lista/listaPets";
 
 type props = {
     clientes: Array<Cliente>
@@ -38,7 +39,7 @@ export default class RoteadorPet extends Component<props, state> {
             return (
                 <div className="paginaListaPet">
                     {barraNavegacao}
-                    <h1>HUMINA HUMINA</h1>
+                    <ListaPet clientes={this.props.clientes} />
                 </div>
             )
         } else if (this.state.tela === 'Cadastro') {
