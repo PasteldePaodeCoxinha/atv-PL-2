@@ -80,22 +80,23 @@ export default class FormularioCadastroPet extends Component<props, state> {
     adicionarPetCliente(e: React.ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         
+        let cachorroTemDono = false
+
         this.props.clientes.forEach(c => {
             if ((c.getPets.filter(p => p.getNome === this.state.nome)).length > 0) {
                 alert("Esse pet já tem um dono")
-                return
+                cachorroTemDono = true
             }
         })
+
+        if (cachorroTemDono) {
+            return
+        }
 
         const cliente = this.props.clientes.find(c => c.nome === this.state.dono)
 
         if (!cliente) {
             alert("Esse dono não existe")
-            return
-        }
-
-        if (cliente.getPets.find(p => p.getNome === this.state.nome)) {
-            alert("Esse dono já cadastro esse pet")
             return
         }
 
