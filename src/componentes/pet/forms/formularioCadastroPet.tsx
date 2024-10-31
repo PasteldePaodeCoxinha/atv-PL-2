@@ -124,7 +124,9 @@ export default class FormularioCadastroPet extends Component<props, state> {
                             className="inputPetForms"
                             placeholder="Dono"
                             value={this.state.dono}
-                            onChange={this.mudarValorDono} />
+                            onChange={this.mudarValorDono}
+                            required
+                            />
 
                     </div>
 
@@ -134,13 +136,17 @@ export default class FormularioCadastroPet extends Component<props, state> {
                             className="inputPetForms"
                             placeholder="Nome"
                             value={this.state.nome}
-                            onChange={this.mudarValorNome} />
+                            onChange={this.mudarValorNome}
+                            required
+                            />
 
                         <input type="text"
                             className="inputPetForms"
                             placeholder="Genêro"
                             value={this.state.genero}
-                            onChange={this.mudarValorGenero} />
+                            onChange={this.mudarValorGenero}
+                            required
+                            />
 
                     </div>
 
@@ -151,19 +157,25 @@ export default class FormularioCadastroPet extends Component<props, state> {
                             className="inputPetForms"
                             placeholder="Tipo"
                             value={this.state.tipo}
-                            onChange={this.mudarValorTipo} />
+                            onChange={this.mudarValorTipo}
+                            required
+                            />
 
                         <input type="text"
                             className="inputPetForms"
                             placeholder="Raça"
                             value={this.state.raca}
-                            onChange={this.mudarValorRaca} />
+                            onChange={this.mudarValorRaca}
+                            required
+                            />
 
                         <input type="text"
                             className="inputPetForms"
                             placeholder="Tamanho"
                             value={this.state.tamanho}
-                            onChange={this.mudarValorTamanho} />
+                            onChange={this.mudarValorTamanho}
+                            required
+                            />
 
                     </div>
 
