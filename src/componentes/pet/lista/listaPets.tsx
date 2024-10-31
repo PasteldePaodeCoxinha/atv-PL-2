@@ -74,7 +74,7 @@ export default class ListaPet extends Component<props, state> {
         return (
             <div className="containerListaPet">
                 <div className="procurarCliente">
-                    <input type="text" className="inpuProcurarCliente" placeholder="Digite o nome do cliente" 
+                    <input type="text" className="inputProcurarCliente" placeholder="Digite o nome do cliente" 
                     onChange={e => this.setState({nomeCliente: e.target.value})}/>
                     <button className="botaoProcurarCliente" onClick={this.procurarCliente}>
                         Procurar
