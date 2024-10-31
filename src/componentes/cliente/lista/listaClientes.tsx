@@ -2,9 +2,6 @@
 import React, { Component } from "react";
 import "./listaClientes.css"
 import Cliente from "../../../modelo/cliente";
-import CPF from "../../../modelo/cpf";
-import RG from "../../../modelo/rg";
-import Telefone from "../../../modelo/telefone";
 import AlterarCliente from "../alterar/alterarCliente";
 
 type props = {

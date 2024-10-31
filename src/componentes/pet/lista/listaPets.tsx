@@ -26,6 +26,7 @@ export default class ListaPet extends Component<props, state> {
         this.gerarListaPet = this.gerarListaPet.bind(this)
         this.excluirPet = this.excluirPet.bind(this)
         this.procurarCliente = this.procurarCliente.bind(this)
+        this.pegarUmPet = this.pegarUmPet.bind(this)
     }
 
     componentDidMount(): void {
@@ -36,13 +37,21 @@ export default class ListaPet extends Component<props, state> {
         this.gerarListaPet()
     }
 
+    pegarUmPet(nome: string) {
+        if (this.state.cliente) {
+            const pet = this.state.cliente.getPets.find(p => p.getNome === nome)
+            this.setState({
+                pet: pet,
+            })
+        }
+    }
+
     procurarCliente() {
         const cliente = this.props.clientes.find(c => c.nome === this.state.nomeCliente)
         this.setState({
             cliente: cliente,
         })
         console.log(cliente);
-        
     }
 
     excluirPet(nome: string) {
@@ -59,7 +68,7 @@ export default class ListaPet extends Component<props, state> {
             return <></>
         } else {
             let listaPet = this.state.cliente.getPets.map((p, i) =>
-                <tr className="linhaTabelaPets" key={i}>
+                <tr className="linhaTabelaPets" key={i} onClick={() => this.pegarUmPet(p.getNome)}>
                     <td>{p.getNome}</td>
                     <td>{p.getTipo}</td>
                     <td>{p.getGenero}</td>
@@ -73,33 +82,46 @@ export default class ListaPet extends Component<props, state> {
     render() {
         return (
             <div className="containerListaPet">
-                <div className="procurarCliente">
-                    <input type="text" className="inputProcurarCliente" placeholder="Digite o nome do cliente" 
-                    onChange={e => this.setState({nomeCliente: e.target.value})}/>
-                    <button className="botaoProcurarCliente" onClick={this.procurarCliente}>
-                        Procurar
-                    </button>
-                </div>
-                {this.state.cliente !== undefined ? (
-                    <div className="petsCadastrados">
-                        <table className="tabelaPets">
-                            <thead>
-                                <tr className="headerTabelaPets">
-                                    <th>Nome</th>
-                                    <th>Tipo</th>
-                                    <th>Genêro</th>
-                                    <th>Excluir</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.gerarListaPet()}
-                            </tbody>
-                        </table>
-                    </div>
+                {this.state.pet === undefined ? (
+                    <>
+                        <div className="procurarCliente">
+                            <input type="text" className="inputProcurarCliente" placeholder="Digite o nome do cliente"
+                                onChange={e => this.setState({ nomeCliente: e.target.value })} />
+                            <button className="botaoProcurarCliente" onClick={this.procurarCliente}>
+                                Procurar
+                            </button>
+                        </div>
+                        {this.state.cliente !== undefined ? (
+                            <div className="petsCadastrados">
+                                <table className="tabelaPets">
+                                    <thead>
+                                        <tr className="headerTabelaPets">
+                                            <th>Nome</th>
+                                            <th>Tipo</th>
+                                            <th>Genêro</th>
+                                            <th>Excluir</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.gerarListaPet()}
+                                    </tbody>
+                                </table>
+                            </div>
 
+                        ) : (
+                            <></>
+                        )}
+                    </>
                 ) : (
-                    <></>
-                )}
+                    <>
+                        <button className="botaVoltarListagemCliente" onClick={() => { this.setState({ cliente: undefined }) }}>
+                            Voltar
+                        </button>
+                        <h1>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+                    </>
+                )
+
+                }
             </div>
         )
     }
