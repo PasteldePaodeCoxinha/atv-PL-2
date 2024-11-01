@@ -2,6 +2,8 @@ import { Component } from "react";
 import "./roteadorProduto.css"
 import BarraNavegacao from "../../barraNavegacao";
 import Produto from "../../../modelo/produto";
+import FormularioCadastroProduto from "../../produto/forms/formularioCadastroProduto";
+import ListaProdutos from "../../produto/lista/listaProdutos";
 
 type props = {
     produtos: Array<Produto>
@@ -37,16 +39,14 @@ export default class RoteadorProduto extends Component<props, state> {
             return (
                 <div className="paginaListaProduto">
                     {barraNavegacao}
-                    {/* <ListaProduto produtos={this.props.produtos} /> */}
-                    <h1>aaaaaaaaaaaaaaaaaa</h1>
+                    <ListaProdutos produtos={this.props.produtos} />
                 </div>
             )
         } else if (this.state.tela === 'Cadastro') {
             return (
                 <div className="paginaCadastroProduto">
                     {barraNavegacao}
-                    {/* <FormularioCadastroProduto produtos={this.props.produtos} /> */}
-                    <h1>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</h1>
+                    <FormularioCadastroProduto produtos={this.props.produtos} />
                 </div>
             )
         }
