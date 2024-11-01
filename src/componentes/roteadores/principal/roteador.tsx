@@ -10,6 +10,8 @@ import RoteadorPet from "../pet/roteadorPet";
 import Pet from "../../../modelo/pet";
 import Produto from "../../../modelo/produto";
 import RoteadorProduto from "../produto/roteadorProduto";
+import Servico from "../../../modelo/servico";
+import RoteadorServico from "../servico/roteadorServico";
 
 type state = {
     tela: string
@@ -45,8 +47,11 @@ export default class Roteador extends Component<{}, state> {
 
         const produtos = [new Produto("shampoo", 50.00), new Produto("coleira", 69.00), new Produto("bola", 4.57)]
 
+        const servicos = [new Servico("tosa", 54.84), new Servico("banho", 21.78), new Servico("cortar unha", 100.01)]
+
         empresaAtual.setClientes = clientes
         empresaAtual.setProdutos = produtos
+        empresaAtual.setServicos = servicos
 
         this.setState({
             empresa: empresaAtual
@@ -85,6 +90,13 @@ export default class Roteador extends Component<{}, state> {
                 <>
                     {barraNavegacao}
                     <RoteadorProduto produtos={this.state.empresa.getProdutos} />
+                </>
+            )
+        } else if (this.state.tela === 'Serviços') {
+            return (
+                <>
+                    {barraNavegacao}
+                    <RoteadorServico servicos={this.state.empresa.getServicos} />
                 </>
             )
         }

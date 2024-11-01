@@ -1,13 +1,13 @@
-.informarcoesDeUmProdutoNaLista li {
+.informarcoesDeUmServicoNaLista li {
     color: black;
     list-style-type: none;
 }
 
-.informarcoesDeUmProdutoNaLista label {
+.informarcoesDeUmServicoNaLista label {
     font-size: 1.5rem;
 }
 
-.informarcoesDeUmProdutoNaLista input {
+.informarcoesDeUmServicoNaLista input {
     font-size: 1.4rem;
     width: 40%;
     background: transparent;
