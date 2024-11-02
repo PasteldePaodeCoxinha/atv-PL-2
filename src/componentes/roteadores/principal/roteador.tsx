@@ -22,7 +22,7 @@ export default class Roteador extends Component<{}, state> {
     constructor(props: {} | Readonly<{}>) {
         super(props)
         this.state = {
-            tela: 'Produtos',
+            tela: 'Clientes',
             empresa: new Empresa()
         }
         this.selecionarView = this.selecionarView.bind(this)
@@ -69,7 +69,9 @@ export default class Roteador extends Component<{}, state> {
     render() {
         let barraNavegacao = <BarraNavegacao
             seletorView={this.selecionarView}
-            botoes={['Clientes', 'Pets', 'Produtos', 'Serviços']} />
+            botoes={['Clientes', 'Pets', 'Produtos', 'Serviços']}
+            titulo=""
+            />
 
         if (this.state.tela === 'Clientes') {
             return (

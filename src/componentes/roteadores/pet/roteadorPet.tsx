@@ -34,7 +34,9 @@ export default class RoteadorPet extends Component<props, state> {
     render() {
         let barraNavegacao = <BarraNavegacao
             seletorView={this.selecionarView}
-            botoes={['Lista', 'Cadastro']} />
+            botoes={['Lista', 'Cadastro']}
+            titulo="Pet"
+        />
         if (this.state.tela === 'Lista') {
             return (
                 <div className="paginaListaPet">

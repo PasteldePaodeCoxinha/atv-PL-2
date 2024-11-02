@@ -29,6 +29,15 @@
     text-decoration: none;
 }
 
+.tituloBarraNavegacao {
+    display: flex;
+    align-self: flex-end;
+    width: 100%;
+    height: 100%;
+    color: #FFFFFF;
+    font-size: 0.8rem;
+}
+
 @media only screen and (min-width: 768px) {
 
     .containerDaBarraDeNavegacao {
@@ -49,4 +58,14 @@
         transition: all 0.2s;
         text-decoration: none;
     }
+
+    .tituloBarraNavegacao {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        height: 100%;
+        color: #FFFFFF;
+        font-size: 1.2rem;
+    }
+
 }

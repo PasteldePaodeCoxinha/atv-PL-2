@@ -17,7 +17,7 @@
 .linhaFormularioCadastroCliente {
     display: inline-flex;
     margin-bottom: 2.7rem;
-    justify-content: start;
+    justify-content: flex-start;
     width: 100%;
     gap: 1.4rem;
 }
@@ -87,7 +87,7 @@
     .linhaFormularioCadastroCliente {
         display: inline-flex;
         margin-bottom: 4rem;
-        justify-content: start;
+        justify-content: flex-start;
         width: 100%;
         gap: 1.7rem;
     }

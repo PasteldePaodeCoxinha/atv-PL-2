@@ -4,6 +4,7 @@ import "./barraNavegacao.css"
 
 type props = {
     botoes: string[],
+    titulo: string,
     seletorView: Function
 }
 
@@ -31,11 +32,10 @@ export default class BarraNavegacao extends Component<props> {
         return (
             <>
                 <nav className="barraDeNavegacao">
-                    <div>
-                        <ul className="containerDaBarraDeNavegacao">
-                            {this.gerarListaBotoes()}
-                        </ul>
-                    </div>
+                    <ul className="containerDaBarraDeNavegacao">
+                        {this.gerarListaBotoes()}
+                    </ul>
+                    <p className="tituloBarraNavegacao">{this.props.titulo}</p>
                 </nav>
             </>
         )
