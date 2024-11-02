@@ -30,11 +30,9 @@
 }
 
 .tituloBarraNavegacao {
-    display: flex;
-    align-self: flex-end;
-    width: 100%;
-    height: 100%;
+    margin-left: auto;
     color: #FFFFFF;
+    margin-right: 2rem;
     font-size: 0.8rem;
 }
 
@@ -60,10 +58,8 @@
     }
 
     .tituloBarraNavegacao {
-        display: flex;
-        flex-direction: row-reverse;
-        width: 100%;
-        height: 100%;
+        margin-left: auto;
+        margin-right: 2rem;
         color: #FFFFFF;
         font-size: 1.2rem;
     }

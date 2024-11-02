@@ -20,7 +20,7 @@ export default class AlterarServico extends Component<props, state> {
 
     render() {
         return (<div className="informarcoesDeUmServicoNaLista">
-            <ul>
+            <ul className="listaDeInformacoesServico">
                 <li> <label htmlFor="">Nome:</label> <input type="text" value={this.state.servico.nome} /></li>
                 <li><label htmlFor="">Preço:</label> <input type="number" value={this.state.servico.preco} /> </li>
 

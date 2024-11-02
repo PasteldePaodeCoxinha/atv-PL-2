@@ -25,12 +25,49 @@ export default class AlterarCliente extends Component<props, state> {
         }
         this.menuAdicionarTelefone = this.menuAdicionarTelefone.bind(this)
         this.adicionarTelefone = this.adicionarTelefone.bind(this)
+        this.deletarTelefone = this.deletarTelefone.bind(this)
+
+        this.mudarValorNome = this.mudarValorNome.bind(this)
+        this.mudarValorNomeSocial = this.mudarValorNomeSocial.bind(this)
+
+        this.mudarValorEmail = this.mudarValorEmail.bind(this)
     }
 
     adicionarTelefone() {
         this.state.cliente.getTelefones.push(new Telefone(this.state.novoDdd, this.state.novoTel))
         this.setState({
             menuTel: !this.state.menuTel
+        })
+    }
+
+    deletarTelefone(numero: string) {
+        this.state.cliente.getTelefones.splice((this.state.cliente.getTelefones.findIndex(t => t.getNumero === numero)), 1)
+        this.setState({
+            cliente: this.state.cliente
+        })
+    }
+
+    mudarValorNome(e: React.ChangeEvent<HTMLInputElement>) {
+        const cliente = this.state.cliente
+        cliente.nome = e.target.value
+        this.setState({
+            cliente: cliente
+        })
+    }
+
+    mudarValorNomeSocial(e: React.ChangeEvent<HTMLInputElement>) {
+        const cliente = this.state.cliente
+        cliente.nomeSocial = e.target.value
+        this.setState({
+            cliente: cliente
+        })
+    }
+
+    mudarValorEmail(e: React.ChangeEvent<HTMLInputElement>) {
+        const cliente = this.state.cliente
+        cliente.setEmail = e.target.value
+        this.setState({
+            cliente: cliente
         })
     }
 
@@ -45,40 +82,8 @@ export default class AlterarCliente extends Component<props, state> {
     }
 
     render() {
-        return (<div className="informarcoesDeUmClienteNaLista">
-            <ul>
-                <li> <label htmlFor="">Nome:</label> <input type="text" value={this.state.cliente.nome} /></li>
-                <li><label htmlFor="">Nome Social:</label> <input type="text" value={this.state.cliente.nomeSocial} /> </li>
-
-                <li><label htmlFor="">Email:</label> <input type="text" value={this.state.cliente.getEmail} /> </li>
-
-                <li><label htmlFor="">Valor do CPF:</label> <input type="text" value={this.state.cliente.getCpf.getValor} /></li>
-                <li><label htmlFor="">Data de emissão do CPF:</label> <input type="text" value={this.state.cliente.getCpf.getDataEmissao.toISOString().substring(0, 10)} /></li>
-
-                <li> <label htmlFor="">Valor do RG:</label> <input type="text" value={this.state.cliente.getRgs[0].getValor} /></li>
-                <li> <label htmlFor="">Data de emissão do RG:</label> <input type="text" value={this.state.cliente.getRgs[0].getDataEmissao.toISOString().substring(0, 10)} /></li>
-
-                <li>
-                    <div>
-                        <span>1º Telefone: +{this.state.cliente.getTelefones[0].getDdd} {this.state.cliente.getTelefones[0].getNumero}</span>
-                        {this.state.cliente.getTelefones.length > 1 ? <button>Deletar telefone</button> : <></>}
-                    </div>
-                </li>
-
-                {this.state.cliente.getTelefones[1] ?
-                    <li>
-                        <div>
-                            <span>2º Telefone: +{this.state.cliente.getTelefones[1].getDdd} {this.state.cliente.getTelefones[1].getNumero}</span>
-                            <button>Deletar telefone</button>
-                        </div>
-                    </li>
-                    :
-                    this.state.menuTel ?
-                        this.menuAdicionarTelefone()
-                        :
-                        <button className="botaoAddTel" onClick={() => this.setState({ menuTel: !this.state.menuTel })}>Adicionar telefone</button>
-                }
-            </ul>
-        </div>)
+        return (
+            <div className="containerInformacoesCliente">
+            </div>)
     }
 }

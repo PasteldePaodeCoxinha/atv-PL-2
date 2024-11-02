@@ -20,7 +20,7 @@ export default class AlterarPet extends Component<props, state> {
 
     render() {
         return (<div className="informarcoesDeUmPetNaLista">
-            <ul>
+            <ul className="listaDeInformacoesPet">
                 <li> <label htmlFor="">Nome:</label> <input type="text" value={this.state.pet.getNome} /></li>
                 <li><label htmlFor="">Genêro:</label> <input type="text" value={this.state.pet.getGenero} /> </li>
 

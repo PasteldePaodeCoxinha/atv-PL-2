@@ -20,7 +20,7 @@ export default class AlterarProduto extends Component<props, state> {
 
     render() {
         return (<div className="informarcoesDeUmProdutoNaLista">
-            <ul>
+            <ul className="listaDeInformacoesProduto">
                 <li> <label htmlFor="">Nome:</label> <input type="text" value={this.state.produto.nome} /></li>
                 <li><label htmlFor="">Preço:</label> <input type="number" value={this.state.produto.preco} /> </li>
 

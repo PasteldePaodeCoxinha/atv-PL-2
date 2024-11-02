@@ -1,13 +1,17 @@
 .informarcoesDeUmPetNaLista li {
+    width: 100%;
     color: black;
     list-style-type: none;
 }
 
-.informarcoesDeUmPetNaLista label{
+.informarcoesDeUmPetNaLista label {
+    margin-left: 5rem;
     font-size: 1.5rem;
 }
 
 .informarcoesDeUmPetNaLista input {
+    margin-left: auto;
+    margin-right: 3rem;
     font-size: 1.4rem;
     width: 40%;
     background: transparent;
@@ -16,26 +20,15 @@
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
-.menuAddTel {
-    text-align: start;
-    justify-content: space-around;
-    display: inline-flex;
-
+.listaDeInformacoesPet {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
-.menuAddTel input {
-    background: transparent;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-color: #E0C524;
-    color: white;
-}
-
-.menuAddTel input:focus {
-    outline: none;
-}
-
-.inputAddNovoTelDDD {
-    width: 8%;
+.listaDeInformacoesPet li {
+    width: 100%;
+    display: flex;
 }

@@ -50,9 +50,6 @@ export default class ListaCliente extends Component<props, state> {
 
     excluirCliente(nome: string) {
         this.state.clientes.splice((this.state.clientes.findIndex(c => c.nome === nome)), 1)
-        this.setState({
-            clientes: this.state.clientes
-        })
     }
 
     gerarListaCliente() {
