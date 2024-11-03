@@ -52,11 +52,9 @@ export default class FormularioCadastroCliente extends Component<props, state> {
         this.mudarValorCpf = this.mudarValorCpf.bind(this)
         this.mudarValorDataCpf = this.mudarValorDataCpf.bind(this)
 
-        this.mudarValorQtdRg = this.mudarValorQtdRg.bind(this)
         this.mudarValorRg = this.mudarValorRg.bind(this)
         this.mudarValorDataRg = this.mudarValorDataRg.bind(this)
 
-        this.mudarValorQtdTel = this.mudarValorQtdTel.bind(this)
         this.mudarValorTelefone1 = this.mudarValorTelefone1.bind(this)
         this.mudarValorTelefone2 = this.mudarValorTelefone2.bind(this)
 
@@ -93,12 +91,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
         })
     }
 
-    mudarValorQtdRg(e: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({
-            qtdRg: Number(e.target.value).valueOf()
-        })
-    }
-
     mudarValorRg(e: React.ChangeEvent<HTMLInputElement>) {
         this.setState({
             valorRg: e.target.value
@@ -108,12 +100,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
     mudarValorDataRg(e: React.ChangeEvent<HTMLInputElement>) {
         this.setState({
             dataRg: e.target.value
-        })
-    }
-
-    mudarValorQtdTel(e: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({
-            qtdTelefone: Number(e.target.value).valueOf()
         })
     }
 
@@ -218,8 +204,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 required />
 
                             <input type="text"
-                                onFocus={e => e.target.type = "date"}
-                                onBlur={e => e.target.type = "text"}
                                 className="inputClienteForms"
                                 placeholder="Data CPF"
                                 datatype=""
@@ -241,8 +225,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 required />
 
                             <input type="text"
-                                onFocus={e => e.target.type = "date"}
-                                onBlur={e => e.target.type = "text"}
                                 placeholder="Data RG"
                                 className="inputClienteForms"
                                 value={this.state.dataRg}

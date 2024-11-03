@@ -18,7 +18,7 @@ export default class RoteadorServico extends Component<props, state> {
     constructor(props: props | Readonly<props>) {
         super(props)
         this.state = {
-            tela: 'Lista'
+            tela: 'Cadastro'
         }
         this.selecionarView = this.selecionarView.bind(this)
     }
