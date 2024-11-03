@@ -4,9 +4,12 @@ import BarraNavegacao from "../../barraNavegacao";
 import Produto from "../../../modelo/produto";
 import FormularioCadastroProduto from "../../produto/forms/formularioCadastroProduto";
 import ListaProdutos from "../../produto/lista/listaProdutos";
+import RegistroCompraProduto from "../../produto/registro/registroCompraProduto";
+import Cliente from "../../../modelo/cliente";
 
 type props = {
-    produtos: Array<Produto>
+    clientes: Cliente[],
+    produtos: Produto[]
 }
 
 type state = {
@@ -34,9 +37,9 @@ export default class RoteadorProduto extends Component<props, state> {
     render() {
         let barraNavegacao = <BarraNavegacao
             seletorView={this.selecionarView}
-            botoes={['Lista', 'Cadastro', 'Registrar Compra']} 
+            botoes={['Lista', 'Cadastro', 'Registrar Compra']}
             titulo="Produto"
-            />
+        />
         if (this.state.tela === 'Lista') {
             return (
                 <div className="paginaListaProduto">
@@ -49,6 +52,13 @@ export default class RoteadorProduto extends Component<props, state> {
                 <div className="paginaCadastroProduto">
                     {barraNavegacao}
                     <FormularioCadastroProduto produtos={this.props.produtos} />
+                </div>
+            )
+        } else if (this.state.tela === 'Registrar Compra') {
+            return (
+                <div className="paginaRegistroCompra">
+                    {barraNavegacao}
+                    <RegistroCompraProduto clientes={this.props.clientes} produtos={this.props.produtos} />
                 </div>
             )
         }

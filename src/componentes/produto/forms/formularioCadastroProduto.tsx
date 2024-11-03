@@ -4,7 +4,7 @@ import "./formularioCadastroProduto.css"
 import Produto from "../../../modelo/produto";
 
 type props = {
-    produtos: Array<Produto>
+    produtos: Produto[]
 }
 
 type state = {
