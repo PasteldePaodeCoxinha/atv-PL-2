@@ -16,20 +16,56 @@ export default class AlterarPet extends Component<props, state> {
         this.state = {
             pet: props.pet
         }
+
+        this.mudarValorNome = this.mudarValorNome.bind(this)
+        this.mudarValorTamanho = this.mudarValorTamanho.bind(this)
+    }
+
+    mudarValorNome(e: React.ChangeEvent<HTMLInputElement>) {
+        const pet = this.state.pet
+        pet.setNome = e.target.value
+        this.setState({
+            pet: pet
+        })
+    }
+
+    mudarValorTamanho(e: React.ChangeEvent<HTMLInputElement>) {
+        const pet = this.state.pet
+        pet.setTamanho = e.target.value
+        this.setState({
+            pet: pet
+        })
     }
 
     render() {
-        return (<div className="informarcoesDeUmPetNaLista">
-            <ul className="listaDeInformacoesPet">
-                <li> <label htmlFor="">Nome:</label> <input type="text" value={this.state.pet.getNome} /></li>
-                <li><label htmlFor="">Genêro:</label> <input type="text" value={this.state.pet.getGenero} /> </li>
+        return (
+            <div className="containerInformacoesPet">
+                <div className="campoPetEditavel">
+                    <label>Nome:</label>
+                    <input type="text" value={this.state.pet.getNome} onChange={this.mudarValorNome}/>
+                </div>
 
-                <li><label htmlFor="">Tipo:</label> <input type="text" value={this.state.pet.getTipo} /> </li>
-                <li><label htmlFor="">Raça:</label> <input type="text" value={this.state.pet.getRaca} /></li>
+                <div className="campoPetFixo">
+                    <label>Genêro:</label>
+                    <p>{this.state.pet.getGenero}</p>
+                </div>
 
-                <li><label htmlFor="">Tamanho:</label> <input type="text" value={this.state.pet.getTamanho} /></li>
+                <div className="campoPetEditavel">
+                    <label>Tamanho:</label>
+                    <input type="email" value={this.state.pet.getTamanho} onChange={this.mudarValorTamanho}/>
+                </div>
 
-            </ul>
-        </div>)
+                <div className="campoPetFixo">
+                    <label>Tipo:</label>
+                    <p>{this.state.pet.getTipo}</p>
+                </div>
+
+                <div className="campoPetFixo">
+                    <label>Raça:</label>
+                    <p>{this.state.pet.getRaca}</p>
+                </div>
+
+            </div>
+        )
     }
 }

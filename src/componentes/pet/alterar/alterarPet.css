@@ -1,34 +1,64 @@
-.informarcoesDeUmPetNaLista li {
+.containerInformacoesPet {
     width: 100%;
-    color: black;
-    list-style-type: none;
+    margin-top: 3.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
 }
 
-.informarcoesDeUmPetNaLista label {
-    margin-left: 5rem;
-    font-size: 1.5rem;
+.containerInformacoesPet label {
+    font-size: 0.9rem;
+    margin-left: 2rem;
 }
 
-.informarcoesDeUmPetNaLista input {
+.campoPetEditavel,
+.campoPetFixo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.campoPetEditavel input {
     margin-left: auto;
-    margin-right: 3rem;
-    font-size: 1.4rem;
-    width: 40%;
+    margin-right: 4rem;
+    font-size: 0.9rem;
+    width: 31%;
     background: transparent;
     border-width: 2px;
     border-color: #453E96;
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
-.listaDeInformacoesPet {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+.campoPetEditavel input:focus {
+    outline: none;
 }
 
-.listaDeInformacoesPet li {
-    width: 100%;
-    display: flex;
+.campoPetFixo p {
+    margin-left: auto;
+    margin-right: 2rem;
+    font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .containerInformacoesPet label {
+        font-size: 1.3rem;
+        margin-left: 4rem;
+    }
+
+    .campoPetEditavel input {
+        margin-left: auto;
+        margin-right: 4rem;
+        font-size: 1.3rem;
+        width: 31%;
+        background: transparent;
+        border-width: 2px;
+        border-color: #453E96;
+        box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .campoPetFixo p {
+        margin-left: auto;
+        margin-right: 4rem;
+        font-size: 1.3rem;
+    }
 }
