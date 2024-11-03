@@ -1,34 +1,64 @@
-.informarcoesDeUmProdutoNaLista li {
+.containerInformacoesProduto {
     width: 100%;
-    color: black;
-    list-style-type: none;
+    margin-top: 3.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
 }
 
-.informarcoesDeUmProdutoNaLista label {
-    margin-left: 5rem;
-    font-size: 1.5rem;
+.containerInformacoesProduto label {
+    font-size: 0.9rem;
+    margin-left: 2rem;
 }
 
-.informarcoesDeUmProdutoNaLista input {
+.campoProdutoEditavel,
+.campoProdutoFixo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.campoProdutoEditavel input {
     margin-left: auto;
-    margin-right: 3rem;
-    font-size: 1.4rem;
-    width: 40%;
+    margin-right: 4rem;
+    font-size: 0.9rem;
+    width: 31%;
     background: transparent;
     border-width: 2px;
     border-color: #453E96;
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
 
-.listaDeInformacoesProduto {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+.campoProdutoEditavel input:focus {
+    outline: none;
 }
 
-.listaDeInformacoesProduto li {
-    width: 100%;
-    display: flex;
+.campoProdutoFixo p {
+    margin-left: auto;
+    margin-right: 2rem;
+    font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .containerInformacoesProduto label {
+        font-size: 1.3rem;
+        margin-left: 4rem;
+    }
+
+    .campoProdutoEditavel input {
+        margin-left: auto;
+        margin-right: 4rem;
+        font-size: 1.3rem;
+        width: 31%;
+        background: transparent;
+        border-width: 2px;
+        border-color: #453E96;
+        box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .campoProdutoFixo p {
+        margin-left: auto;
+        margin-right: 4rem;
+        font-size: 1.3rem;
+    }
 }
