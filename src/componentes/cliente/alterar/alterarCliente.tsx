@@ -31,12 +31,14 @@ export default class AlterarCliente extends Component<props, state> {
         this.mudarValorNomeSocial = this.mudarValorNomeSocial.bind(this)
 
         this.mudarValorEmail = this.mudarValorEmail.bind(this)
+
+        this.formatarData = this.formatarData.bind(this)
     }
 
     adicionarTelefone() {
         this.state.cliente.getTelefones.push(new Telefone(this.state.novoDdd, this.state.novoTel))
         this.setState({
-            menuTel: !this.state.menuTel
+            menuTel: false
         })
     }
 
@@ -81,9 +83,75 @@ export default class AlterarCliente extends Component<props, state> {
         )
     }
 
+    formatarData(data: Date): string {
+        const dataPartes = (data.toISOString().split("T")[0]).split("-")
+        const dataCerta = dataPartes[2] + "/" + dataPartes[1] + "/" + dataPartes[0]
+        return dataCerta
+    }
+
     render() {
         return (
             <div className="containerInformacoesCliente">
+                <div className="campoClienteEditavel">
+                    <label>Nome:</label>
+                    <input type="text" value={this.state.cliente.nome} onChange={this.mudarValorNome} />
+                </div>
+
+                <div className="campoClienteEditavel">
+                    <label>Nome Social:</label>
+                    <input type="text" value={this.state.cliente.nomeSocial} onChange={this.mudarValorNomeSocial} />
+                </div>
+
+                <div className="campoClienteEditavel">
+                    <label>Email:</label>
+                    <input type="email" value={this.state.cliente.getEmail} onChange={this.mudarValorEmail} />
+                </div>
+
+                <div className="campoClienteFixo">
+                    <label>CPF:</label>
+                    <p>{this.state.cliente.getCpf.getValor} | {this.formatarData(this.state.cliente.getCpf.getDataEmissao)}</p>
+                </div>
+
+                <div className="campoClienteFixo">
+                    <label>RG:</label>
+                    <p>{this.state.cliente.getRgs[0].getValor} | {this.formatarData(this.state.cliente.getRgs[0].getDataEmissao)}</p>
+                </div>
+
+                <div className="campoClienteFixo">
+                    <label>Telefone 1:</label>
+                    <p>+{this.state.cliente.getTelefones[0].getDdd} {this.state.cliente.getTelefones[0].getNumero}</p>
+                    {this.state.cliente.getTelefones[1] ?
+                        (
+                            <button onClick={() => this.deletarTelefone(this.state.cliente.getTelefones[0].getNumero)}
+                                className="botaoDeletarTelCliente">
+                                Deletar Telefone
+                            </button>
+                        )
+                        :
+                        (<></>)
+                    }
+                </div>
+
+                {this.state.cliente.getTelefones[1] ?
+                    (
+                        <div className="campoClienteFixo">
+                            <label>Telefone 2:</label>
+                            <p>+{this.state.cliente.getTelefones[1].getDdd} {this.state.cliente.getTelefones[1].getNumero}</p>
+                            <button onClick={() => this.deletarTelefone(this.state.cliente.getTelefones[0].getNumero)}
+                                className="botaoDeletarTelCliente">
+                                Deletar Telefone
+                            </button>
+                        </div>
+                    )
+                    :
+                    this.state.menuTel ? (
+                        this.menuAdicionarTelefone()
+                    ) : (
+                        <button onClick={() => this.setState({ menuTel: true })}
+                            className="botaoAddTelCliente">Adicionar Telefone
+                        </button>
+                    )
+                }
             </div>)
     }
 }
