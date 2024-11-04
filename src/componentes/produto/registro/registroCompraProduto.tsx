@@ -20,8 +20,30 @@ export default class RegistroCompraProduto extends Component<props, state> {
         this.state = {
             cliente: undefined,
             produto: undefined,
-            textoAviso: "Selecione um cliente"
+            textoAviso: "Selecione um cliente!"
         }
+
+        this.selecionarCliente = this.selecionarCliente.bind(this)
+        this.selecionarProduto = this.selecionarProduto.bind(this)
+    }
+
+    selecionarCliente(n: string) {
+        this.setState({
+            cliente: this.props.clientes.find(c => c.nome === n),
+            textoAviso: "Selecione um produto!"
+        })
+    }
+
+    selecionarProduto(n: string) {
+        this.setState({
+            produto: this.props.produtos.find(p => p.nome === n),
+            textoAviso: "Produto selecionado!"
+        })
+        setTimeout(() => {
+            this.setState({
+                textoAviso: "Selecione um produto!"
+            })
+        }, 2551)
     }
 
     render(): ReactNode {
@@ -40,40 +62,36 @@ export default class RegistroCompraProduto extends Component<props, state> {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>aa</td>
-                            </tr>
-                            <tr>
-                                <td>aa</td>
-                            </tr>
-                            <tr>
-                                <td>aa</td>
-                            </tr>
+                            {this.props.clientes.map((c, i) => {
+                                return (
+                                    <tr key={i} onClick={() => this.selecionarCliente(c.nome)}>
+                                        <td>{c.nome}</td>
+                                    </tr>)
+                            })}
                         </tbody>
                     </table>
 
-                    <table className="tabelaRegistroProdutoProdutos">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Preço</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>aa</td>
-                                <td>aa</td>
-                            </tr>
-                            <tr>
-                                <td>aa</td>
-                                <td>aa</td>
-                            </tr>
-                            <tr>
-                                <td>aa</td>
-                                <td>aa</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    {this.state.cliente ? (
+                        <table className="tabelaRegistroProdutoProdutos">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Preço</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.props.produtos.map((p, i) => {
+                                    return (
+                                        <tr key={i} onClick={() => this.selecionarProduto(p.nome)}>
+                                            <td>{p.nome}</td>
+                                            <td>R$ {((p.preco * 100) * 0.01).toFixed(2).replace(".", ",")}</td>
+                                        </tr>)
+                                })}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <></>
+                    )}
                 </div>
 
             </div>
