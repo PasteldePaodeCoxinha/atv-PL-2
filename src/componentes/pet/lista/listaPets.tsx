@@ -52,7 +52,6 @@ export default class ListaPet extends Component<props, state> {
         this.setState({
             cliente: cliente,
         })
-        console.log(cliente);
     }
 
     excluirPet(nome: string) {
@@ -86,12 +85,25 @@ export default class ListaPet extends Component<props, state> {
                 {this.state.pet === undefined ? (
                     <>
                         <div className="procurarCliente">
-                            <input type="text" className="inputProcurarCliente" placeholder="Digite o nome do cliente"
-                                onChange={e => this.setState({ nomeCliente: e.target.value })} />
+                            <select className="seletorClienteListaPet"
+                                onChange={e => this.setState({ nomeCliente: e.target.value })}>
+                                <option value=""></option>
+                                {this.props.clientes.map((c, i) => {
+                                    return (
+                                        <option
+                                            value={c.nome}
+                                            key={i}>
+                                            {c.nome}
+                                        </option>
+                                    )
+                                })}
+                            </select>
+
                             <button className="botaoProcurarCliente" onClick={this.procurarCliente}>
                                 Procurar
                             </button>
                         </div>
+
                         {this.state.cliente !== undefined ? (
                             <div className="petsCadastrados">
                                 <table className="tabelaPets">
