@@ -59,7 +59,7 @@ export default class FormularioCadastroPet extends Component<props, state> {
         })
     }
 
-    mudarValorGenero(e: React.ChangeEvent<HTMLInputElement>) {
+    mudarValorGenero(e: React.ChangeEvent<HTMLSelectElement>) {
         this.setState({
             genero: e.target.value
         })
@@ -71,7 +71,7 @@ export default class FormularioCadastroPet extends Component<props, state> {
         })
     }
 
-    mudarValorDono(e: React.ChangeEvent<HTMLInputElement>) {
+    mudarValorDono(e: React.ChangeEvent<HTMLSelectElement>) {
         this.setState({
             dono: e.target.value
         })
@@ -79,7 +79,7 @@ export default class FormularioCadastroPet extends Component<props, state> {
 
     adicionarPetCliente(e: React.ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        
+
         let cachorroTemDono = false
 
         this.props.clientes.forEach(c => {
@@ -121,13 +121,20 @@ export default class FormularioCadastroPet extends Component<props, state> {
 
                     <div className="linhaFormularioCadastroPet">
 
-                        <input type="text"
-                            className="inputPetForms"
-                            placeholder="Dono"
-                            value={this.state.dono}
+                        <select className="selectPetForms"
                             onChange={this.mudarValorDono}
-                            required
-                            />
+                            value={this.state.dono}>
+                            <option value="" disabled>Dono</option>
+                            {this.props.clientes.map((c, i) => {
+                                return (
+                                    <option
+                                        value={c.nome}
+                                        key={i}>
+                                        {c.nome}
+                                    </option>
+                                )
+                            })}
+                        </select>
 
                     </div>
 
@@ -139,15 +146,15 @@ export default class FormularioCadastroPet extends Component<props, state> {
                             value={this.state.nome}
                             onChange={this.mudarValorNome}
                             required
-                            />
+                        />
 
-                        <input type="text"
-                            className="inputPetForms"
-                            placeholder="Genêro"
-                            value={this.state.genero}
+                        <select className="selectPetForms"
                             onChange={this.mudarValorGenero}
-                            required
-                            />
+                            value={this.state.genero}>
+                            <option value="" disabled>Genêro</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="masculino">Masculino</option>
+                        </select>
 
                     </div>
 
@@ -160,7 +167,7 @@ export default class FormularioCadastroPet extends Component<props, state> {
                             value={this.state.tipo}
                             onChange={this.mudarValorTipo}
                             required
-                            />
+                        />
 
                         <input type="text"
                             className="inputPetForms"
@@ -168,7 +175,7 @@ export default class FormularioCadastroPet extends Component<props, state> {
                             value={this.state.raca}
                             onChange={this.mudarValorRaca}
                             required
-                            />
+                        />
 
                         <input type="text"
                             className="inputPetForms"
@@ -176,7 +183,7 @@ export default class FormularioCadastroPet extends Component<props, state> {
                             value={this.state.tamanho}
                             onChange={this.mudarValorTamanho}
                             required
-                            />
+                        />
 
                     </div>
 

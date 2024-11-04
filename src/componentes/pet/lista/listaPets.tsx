@@ -86,8 +86,9 @@ export default class ListaPet extends Component<props, state> {
                     <>
                         <div className="procurarCliente">
                             <select className="seletorClienteListaPet"
-                                onChange={e => this.setState({ nomeCliente: e.target.value })}>
-                                <option value=""></option>
+                                onChange={e => this.setState({ nomeCliente: e.target.value })}
+                                value={this.state.nomeCliente}>
+                                <option value="" disabled>Selecione o dono</option>
                                 {this.props.clientes.map((c, i) => {
                                     return (
                                         <option
