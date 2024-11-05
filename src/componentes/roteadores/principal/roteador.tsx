@@ -98,7 +98,7 @@ export default class Roteador extends Component<{}, state> {
             return (
                 <>
                     {barraNavegacao}
-                    <RoteadorServico servicos={this.state.empresa.getServicos} />
+                    <RoteadorServico clientes={this.state.empresa.getClientes} servicos={this.state.empresa.getServicos} />
                 </>
             )
         }
