@@ -64,7 +64,9 @@ export default class RegistroCompraProduto extends Component<props, state> {
                         <tbody>
                             {this.props.clientes.map((c, i) => {
                                 return (
-                                    <tr key={i} onClick={() => this.selecionarCliente(c.nome)}>
+                                    <tr className={c.nome === this.state.cliente?.nome ? "linhaSelecionadaRegistroProduto" : ""}
+                                        key={i}
+                                        onClick={() => this.selecionarCliente(c.nome)}>
                                         <td>{c.nome}</td>
                                     </tr>)
                             })}
@@ -82,7 +84,9 @@ export default class RegistroCompraProduto extends Component<props, state> {
                             <tbody>
                                 {this.props.produtos.map((p, i) => {
                                     return (
-                                        <tr key={i} onClick={() => this.selecionarProduto(p.nome)}>
+                                        <tr className={p.nome === this.state.produto?.nome ? "linhaSelecionadaRegistroProduto" : ""}
+                                        key={i}
+                                        onClick={() => this.selecionarProduto(p.nome)}>
                                             <td>{p.nome}</td>
                                             <td>R$ {((p.preco * 100) * 0.01).toFixed(2).replace(".", ",")}</td>
                                         </tr>)
