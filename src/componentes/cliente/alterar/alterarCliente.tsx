@@ -118,6 +118,21 @@ export default class AlterarCliente extends Component<props, state> {
                 </div>
 
                 <div className="campoClienteFixo">
+                    <label>Qtd Produtos Consumidos:</label>
+                    <p>{this.state.cliente.getProdutosConsumidos.length}</p>
+                </div>
+
+                <div className="campoClienteFixo">
+                    <label>Qtd Serviços consumidos:</label>
+                    <p>{this.state.cliente.getServicosConsumidos.length}</p>
+                </div>
+
+                <div className="campoClienteFixo">
+                    <label>Total gasto:</label>
+                    <p>R$ {((this.state.cliente.getValorGasto * 100) * 0.01).toFixed(2).replace(".", ",")}</p>
+                </div>
+
+                <div className="campoClienteFixo">
                     <label>Telefone 1:</label>
                     <p>+{this.state.cliente.getTelefones[0].getDdd} {this.state.cliente.getTelefones[0].getNumero}</p>
                     {this.state.cliente.getTelefones[1] ?

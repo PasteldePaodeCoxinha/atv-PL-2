@@ -29,10 +29,13 @@ export default class RegistroCompraProduto extends Component<props, state> {
     }
 
     selecionarCliente(n: string) {
-        this.setState({
-            cliente: this.props.clientes.find(c => c.nome === n),
-            textoAviso: "Selecione um produto!"
-        })
+        const cliente = this.props.clientes.find(c => c.nome === n)
+        if (cliente) {
+            this.setState({
+                cliente: cliente,
+                textoAviso: "Selecione um produto!"
+            })
+        }
     }
 
     selecionarProduto(n: string) {
@@ -55,6 +58,14 @@ export default class RegistroCompraProduto extends Component<props, state> {
 
     registrarCompraProduto(produto: Produto) {
         produto.compraramMaisUm()
+        if (this.state.cliente) {
+            const cliente = this.state.cliente
+            cliente.getProdutosConsumidos.push(produto)
+            cliente.setValorGasto = this.state.cliente.getValorGasto + produto.preco
+            this.setState({
+                cliente: cliente
+            })
+        }
     }
 
     render(): ReactNode {

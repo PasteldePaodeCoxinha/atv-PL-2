@@ -55,6 +55,14 @@ export default class RegistroCompraServico extends Component<props, state> {
 
     registrarCompraServico(servico: Servico) {
         servico.compraramMaisUm()
+        if (this.state.cliente) {
+            const cliente = this.state.cliente
+            cliente.getServicosConsumidos.push(servico)
+            cliente.setValorGasto = this.state.cliente.getValorGasto + servico.preco
+            this.setState({
+                cliente: cliente
+            })
+        }
     }
 
     render(): ReactNode {
