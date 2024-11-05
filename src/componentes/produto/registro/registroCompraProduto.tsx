@@ -25,6 +25,7 @@ export default class RegistroCompraProduto extends Component<props, state> {
 
         this.selecionarCliente = this.selecionarCliente.bind(this)
         this.selecionarProduto = this.selecionarProduto.bind(this)
+        this.registrarCompraProduto = this.registrarCompraProduto.bind(this)
     }
 
     selecionarCliente(n: string) {
@@ -35,15 +36,25 @@ export default class RegistroCompraProduto extends Component<props, state> {
     }
 
     selecionarProduto(n: string) {
-        this.setState({
-            produto: this.props.produtos.find(p => p.nome === n),
-            textoAviso: "Produto selecionado!"
-        })
-        setTimeout(() => {
+        const produto = this.props.produtos.find(p => p.nome === n)
+        if (produto) {
             this.setState({
-                textoAviso: "Selecione um produto!"
+                produto: produto,
+                textoAviso: "Compra registrada!"
             })
-        }, 2551)
+
+            this.registrarCompraProduto(produto)
+
+            setTimeout(() => {
+                this.setState({
+                    textoAviso: "Selecione um produto!"
+                })
+            }, 2551)
+        }
+    }
+
+    registrarCompraProduto(produto: Produto) {
+        produto.compraramMaisUm()
     }
 
     render(): ReactNode {
@@ -85,8 +96,8 @@ export default class RegistroCompraProduto extends Component<props, state> {
                                 {this.props.produtos.map((p, i) => {
                                     return (
                                         <tr className={p.nome === this.state.produto?.nome ? "linhaSelecionadaRegistroProduto" : ""}
-                                        key={i}
-                                        onClick={() => this.selecionarProduto(p.nome)}>
+                                            key={i}
+                                            onClick={() => { this.selecionarProduto(p.nome) }}>
                                             <td>{p.nome}</td>
                                             <td>R$ {((p.preco * 100) * 0.01).toFixed(2).replace(".", ",")}</td>
                                         </tr>)
