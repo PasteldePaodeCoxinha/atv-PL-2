@@ -22,7 +22,7 @@ export default class Roteador extends Component<{}, state> {
     constructor(props: {} | Readonly<{}>) {
         super(props)
         this.state = {
-            tela: 'Produtos',
+            tela: 'Clientes',
             empresa: new Empresa()
         }
         this.selecionarView = this.selecionarView.bind(this)

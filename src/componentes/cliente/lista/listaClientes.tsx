@@ -15,6 +15,7 @@ type state = {
     nomeSocial: string
     email: string
     telefone: string
+    ordemLista: number
 }
 
 export default class ListaCliente extends Component<props, state> {
@@ -26,7 +27,8 @@ export default class ListaCliente extends Component<props, state> {
             nome: "",
             nomeSocial: "",
             email: "",
-            telefone: ""
+            telefone: "",
+            ordemLista: 0
         }
         this.gerarListaCliente = this.gerarListaCliente.bind(this)
         this.excluirCliente = this.excluirCliente.bind(this)
@@ -56,7 +58,13 @@ export default class ListaCliente extends Component<props, state> {
         if (this.state.clientes.length <= 0) {
             return <></>
         } else {
-            let listaCliente = this.state.clientes.map((c, i) =>
+            let cliente = this.state.clientes
+
+            if (this.state.ordemLista === 1) {
+                cliente = cliente.sort((a,b) => a.getProdutosConsumidos.length - b.getProdutosConsumidos.length)
+            }
+
+            let listaCliente = cliente.map((c, i) =>
                 <tr className="linhaTabelaClientes" key={i} onClick={() => this.pegarUmCliente(c.nome)
                 }>
                     <td>{c.nome}</td>
@@ -72,6 +80,11 @@ export default class ListaCliente extends Component<props, state> {
     render() {
         return (
             <div className="containerListaCliente">
+                <select className="seletorOrdemListaCliente">
+                    <option value={0}>Ordenar por ordem cadastrado</option>
+                    <option value={1}>Ordenar por qtd produtos consumidos</option>
+                </select>
+
                 {this.state.cliente === undefined ? (
                     <div className="clientesCadastrados">
                         <table className="tabelaClientes">
