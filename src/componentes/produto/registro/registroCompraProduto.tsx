@@ -45,6 +45,16 @@ export default class RegistroCompraProduto extends Component<props, state> {
                 this.state.cliente.getProdutosConsumidos.push(this.state.produto)
             }
         }
+
+        this.setState({
+            textoAviso: "Compra registrada!"
+        })
+
+        setTimeout(() => {
+            this.setState({
+                textoAviso: "Selecione um produto!"
+            })
+        }, 1500)
     }
 
     render(): ReactNode {
@@ -76,6 +86,10 @@ export default class RegistroCompraProduto extends Component<props, state> {
                         </table>
                     ) : (
                         <div className="menuRegistroCompraProduto">
+                            <button className="botaVoltarRegistroProduto" onClick={() => { this.setState({ cliente: undefined }) }}>
+                                Voltar
+                            </button>
+
                             <div className="containerSeletorProduto">
                                 <select className="seletorProduto"
                                     onChange={e => this.setState({ produto: this.props.produtos.find(p => p.nome === e.target.value) })}

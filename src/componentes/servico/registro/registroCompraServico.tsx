@@ -11,7 +11,8 @@ type props = {
 type state = {
     cliente: Cliente | undefined,
     servico: Servico | undefined,
-    textoAviso: string
+    textoAviso: string,
+    qtdServicos: number
 }
 
 export default class RegistroCompraServico extends Component<props, state> {
@@ -20,49 +21,40 @@ export default class RegistroCompraServico extends Component<props, state> {
         this.state = {
             cliente: undefined,
             servico: undefined,
-            textoAviso: "Selecione um cliente!"
+            textoAviso: "Selecione um cliente!",
+            qtdServicos: 0
         }
 
         this.selecionarCliente = this.selecionarCliente.bind(this)
-        this.selecionarServico = this.selecionarServico.bind(this)
-        this.registrarCompraServico = this.registrarCompraServico.bind(this)
+        this.registrarCompra = this.registrarCompra.bind(this)
     }
 
     selecionarCliente(n: string) {
+        const cliente = this.props.clientes.find(c => c.nome === n)
+        if (cliente) {
+            this.setState({
+                cliente: cliente,
+                textoAviso: "Selecione um serviço!"
+            })
+        }
+    }
+
+    registrarCompra() {
+        if (this.state.cliente && this.state.servico) {
+            for (let i = 0; i < this.state.qtdServicos; i++) {
+                this.state.cliente.getServicosConsumidos.push(this.state.servico)
+            }
+        }
+
         this.setState({
-            cliente: this.props.clientes.find(c => c.nome === n),
-            textoAviso: "Selecione um serviço!"
+            textoAviso: "Compra registrada!"
         })
-    }
 
-    selecionarServico(n: string) {
-        const servico = this.props.servicos.find(p => p.nome === n)
-        if (servico) {
+        setTimeout(() => {
             this.setState({
-                servico: servico,
-                textoAviso: "Compra registrada!"
+                textoAviso: "Selecione um serviço!"
             })
-
-            this.registrarCompraServico(servico)
-
-            setTimeout(() => {
-                this.setState({
-                    textoAviso: "Selecione um servico!"
-                })
-            }, 2551)
-        }
-    }
-
-    registrarCompraServico(servico: Servico) {
-        servico.compraramMaisUm()
-        if (this.state.cliente) {
-            const cliente = this.state.cliente
-            cliente.getServicosConsumidos.push(servico)
-            cliente.setValorGasto = this.state.cliente.getValorGasto + servico.preco
-            this.setState({
-                cliente: cliente
-            })
-        }
+        }, 1500)
     }
 
     render(): ReactNode {
@@ -74,46 +66,65 @@ export default class RegistroCompraServico extends Component<props, state> {
                 </div>
 
                 <div className="containerTabelaResgistroServico">
-                    <table className="tabelaRegistroServicoClientes">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.props.clientes.map((c, i) => {
-                                return (
-                                    <tr className={c.nome === this.state.cliente?.nome ? "linhaSelecionadaRegistroServico" : ""}
-                                        key={i}
-                                        onClick={() => this.selecionarCliente(c.nome)}>
-                                        <td>{c.nome}</td>
-                                    </tr>)
-                            })}
-                        </tbody>
-                    </table>
-
-                    {this.state.cliente ? (
-                        <table className="tabelaRegistroServicoServicos">
+                    {!this.state.cliente ? (
+                        <table className="tabelaRegistroServicoClientes">
                             <thead>
                                 <tr>
                                     <th>Nome</th>
-                                    <th>Preço</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.props.servicos.map((p, i) => {
+                                {this.props.clientes.map((c, i) => {
                                     return (
-                                        <tr className={p.nome === this.state.servico?.nome ? "linhaSelecionadaRegistroServico" : ""}
+                                        <tr className={c.nome === this.state.cliente?.nome ? "linhaSelecionadaRegistroServico" : ""}
                                             key={i}
-                                            onClick={() => { this.selecionarServico(p.nome) }}>
-                                            <td>{p.nome}</td>
-                                            <td>R$ {((p.preco * 100) * 0.01).toFixed(2).replace(".", ",")}</td>
+                                            onClick={() => this.selecionarCliente(c.nome)}>
+                                            <td>{c.nome}</td>
                                         </tr>)
                                 })}
                             </tbody>
                         </table>
                     ) : (
-                        <></>
+                        <div className="menuRegistroCompraServico">
+                            <button className="botaVoltarRegistroServico" onClick={() => { this.setState({ cliente: undefined }) }}>
+                                Voltar
+                            </button>
+
+                            <div className="containerSeletorServico">
+                                <select className="seletorServico"
+                                    onChange={e => this.setState({ servico: this.props.servicos.find(p => p.nome === e.target.value) })}
+                                    value={this.state.servico?.nome}>
+                                    <option value="" disabled>Selecione o servico</option>
+                                    {this.props.servicos.map((p, i) => {
+                                        return (
+                                            <option
+                                                value={p.nome}
+                                                key={i}>
+                                                {p.nome}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+
+                                <input type="number"
+                                    className="qtdServicosEscolher"
+                                    value={this.state.qtdServicos}
+                                    onChange={e => {
+                                        this.setState({
+                                            qtdServicos: Number(e.target.value).valueOf()
+                                        })
+                                    }}
+                                />
+                            </div>
+
+                            <button className="botaResgitrarCompraServico"
+                                onClick={() => this.registrarCompra()}
+                            >
+                                <p>
+                                    Registrar
+                                </p>
+                            </button>
+                        </div>
                     )}
                 </div>
 
