@@ -12,6 +12,7 @@ type state = {
     cliente: Cliente | undefined,
     produto: Produto | undefined,
     textoAviso: string,
+    nomeProduto: string,
     qtdProdutos: number
 }
 
@@ -22,6 +23,7 @@ export default class RegistroCompraProduto extends Component<props, state> {
             cliente: undefined,
             produto: undefined,
             textoAviso: "Selecione um cliente!",
+            nomeProduto: "",
             qtdProdutos: 0
         }
 
@@ -47,7 +49,10 @@ export default class RegistroCompraProduto extends Component<props, state> {
         }
 
         this.setState({
-            textoAviso: "Compra registrada!"
+            textoAviso: "Compra registrada!",
+            produto: undefined,
+            qtdProdutos: 0,
+            nomeProduto: ""
         })
 
         setTimeout(() => {
@@ -92,8 +97,14 @@ export default class RegistroCompraProduto extends Component<props, state> {
 
                             <div className="containerSeletorProduto">
                                 <select className="seletorProduto"
-                                    onChange={e => this.setState({ produto: this.props.produtos.find(p => p.nome === e.target.value) })}
-                                    value={this.state.produto?.nome}>
+                                    onChange={e => {
+                                        this.setState({
+                                            produto: this.props.produtos.find(p => p.nome === e.target.value),
+                                            nomeProduto: e.target.value
+                                        })
+                                    }}
+                                    value={this.state.nomeProduto}
+                                >
                                     <option value="" disabled>Selecione o produto</option>
                                     {this.props.produtos.map((p, i) => {
                                         return (

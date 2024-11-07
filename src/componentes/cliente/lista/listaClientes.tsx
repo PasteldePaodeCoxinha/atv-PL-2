@@ -80,13 +80,15 @@ export default class ListaCliente extends Component<props, state> {
     render() {
         return (
             <div className="containerListaCliente">
-                <select className="seletorOrdemListaCliente">
-                    <option value={0}>Ordenar por ordem cadastrado</option>
-                    <option value={1}>Ordenar por qtd produtos consumidos</option>
-                </select>
-
                 {this.state.cliente === undefined ? (
                     <div className="clientesCadastrados">
+                        <select className="seletorOrdemListaCliente"
+                            onChange={e => this.setState({ ordemLista: Number(e.target.value).valueOf() })}
+                        >
+                            <option value={0}>Ordenar por ordem cadastrado</option>
+                            <option value={1}>Ordenar por qtd produtos consumidos</option>
+                        </select>
+                        
                         <table className="tabelaClientes">
                             <thead>
                                 <tr className="headerTabelaClientes">

@@ -12,6 +12,7 @@ type state = {
     cliente: Cliente | undefined,
     servico: Servico | undefined,
     textoAviso: string,
+    nomeServico: string,
     qtdServicos: number
 }
 
@@ -22,6 +23,7 @@ export default class RegistroCompraServico extends Component<props, state> {
             cliente: undefined,
             servico: undefined,
             textoAviso: "Selecione um cliente!",
+            nomeServico: "",
             qtdServicos: 0
         }
 
@@ -47,7 +49,10 @@ export default class RegistroCompraServico extends Component<props, state> {
         }
 
         this.setState({
-            textoAviso: "Compra registrada!"
+            textoAviso: "Compra registrada!",
+            servico: undefined,
+            qtdServicos: 0,
+            nomeServico: ""
         })
 
         setTimeout(() => {
@@ -92,8 +97,14 @@ export default class RegistroCompraServico extends Component<props, state> {
 
                             <div className="containerSeletorServico">
                                 <select className="seletorServico"
-                                    onChange={e => this.setState({ servico: this.props.servicos.find(p => p.nome === e.target.value) })}
-                                    value={this.state.servico?.nome}>
+                                    onChange={e => {
+                                        this.setState({
+                                            servico: this.props.servicos.find(s => s.nome === e.target.value),
+                                            nomeServico: e.target.value
+                                        })
+                                    }}
+                                    value={this.state.nomeServico}
+                                >
                                     <option value="" disabled>Selecione o servico</option>
                                     {this.props.servicos.map((p, i) => {
                                         return (
