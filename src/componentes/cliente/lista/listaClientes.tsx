@@ -61,7 +61,7 @@ export default class ListaCliente extends Component<props, state> {
             let cliente = this.state.clientes
 
             if (this.state.ordemLista === 1) {
-                cliente = cliente.sort((a,b) => a.getProdutosConsumidos.length - b.getProdutosConsumidos.length)
+                cliente = cliente.sort((a, b) => b.getProdutosConsumidos.length - a.getProdutosConsumidos.length)
             }
 
             let listaCliente = cliente.map((c, i) =>

@@ -11,7 +11,8 @@ type props = {
 type state = {
     cliente: Cliente | undefined,
     produto: Produto | undefined,
-    textoAviso: string
+    textoAviso: string,
+    qtdProdutos: number
 }
 
 export default class RegistroCompraProduto extends Component<props, state> {
@@ -20,12 +21,12 @@ export default class RegistroCompraProduto extends Component<props, state> {
         this.state = {
             cliente: undefined,
             produto: undefined,
-            textoAviso: "Selecione um cliente!"
+            textoAviso: "Selecione um cliente!",
+            qtdProdutos: 0
         }
 
         this.selecionarCliente = this.selecionarCliente.bind(this)
-        this.selecionarProduto = this.selecionarProduto.bind(this)
-        this.registrarCompraProduto = this.registrarCompraProduto.bind(this)
+        this.registrarCompra = this.registrarCompra.bind(this)
     }
 
     selecionarCliente(n: string) {
@@ -38,33 +39,11 @@ export default class RegistroCompraProduto extends Component<props, state> {
         }
     }
 
-    selecionarProduto(n: string) {
-        const produto = this.props.produtos.find(p => p.nome === n)
-        if (produto) {
-            this.setState({
-                produto: produto,
-                textoAviso: "Compra registrada!"
-            })
-
-            this.registrarCompraProduto(produto)
-
-            setTimeout(() => {
-                this.setState({
-                    textoAviso: "Selecione um produto!"
-                })
-            }, 2551)
-        }
-    }
-
-    registrarCompraProduto(produto: Produto) {
-        produto.compraramMaisUm()
-        if (this.state.cliente) {
-            const cliente = this.state.cliente
-            cliente.getProdutosConsumidos.push(produto)
-            cliente.setValorGasto = this.state.cliente.getValorGasto + produto.preco
-            this.setState({
-                cliente: cliente
-            })
+    registrarCompra() {
+        if (this.state.cliente && this.state.produto) {
+            for (let i = 0; i < this.state.qtdProdutos; i++) {
+                this.state.cliente.getProdutosConsumidos.push(this.state.produto)
+            }
         }
     }
 
@@ -77,46 +56,61 @@ export default class RegistroCompraProduto extends Component<props, state> {
                 </div>
 
                 <div className="containerTabelaResgistroProduto">
-                    <table className="tabelaRegistroProdutoClientes">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.props.clientes.map((c, i) => {
-                                return (
-                                    <tr className={c.nome === this.state.cliente?.nome ? "linhaSelecionadaRegistroProduto" : ""}
-                                        key={i}
-                                        onClick={() => this.selecionarCliente(c.nome)}>
-                                        <td>{c.nome}</td>
-                                    </tr>)
-                            })}
-                        </tbody>
-                    </table>
-
-                    {this.state.cliente ? (
-                        <table className="tabelaRegistroProdutoProdutos">
+                    {!this.state.cliente ? (
+                        <table className="tabelaRegistroProdutoClientes">
                             <thead>
                                 <tr>
                                     <th>Nome</th>
-                                    <th>Preço</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.props.produtos.map((p, i) => {
+                                {this.props.clientes.map((c, i) => {
                                     return (
-                                        <tr className={p.nome === this.state.produto?.nome ? "linhaSelecionadaRegistroProduto" : ""}
+                                        <tr className={c.nome === this.state.cliente?.nome ? "linhaSelecionadaRegistroProduto" : ""}
                                             key={i}
-                                            onClick={() => { this.selecionarProduto(p.nome) }}>
-                                            <td>{p.nome}</td>
-                                            <td>R$ {((p.preco * 100) * 0.01).toFixed(2).replace(".", ",")}</td>
+                                            onClick={() => this.selecionarCliente(c.nome)}>
+                                            <td>{c.nome}</td>
                                         </tr>)
                                 })}
                             </tbody>
                         </table>
                     ) : (
-                        <></>
+                        <div className="menuRegistroCompraProduto">
+                            <div className="containerSeletorProduto">
+                                <select className="seletorProduto"
+                                    onChange={e => this.setState({ produto: this.props.produtos.find(p => p.nome === e.target.value) })}
+                                    value={this.state.produto?.nome}>
+                                    <option value="" disabled>Selecione o produto</option>
+                                    {this.props.produtos.map((p, i) => {
+                                        return (
+                                            <option
+                                                value={p.nome}
+                                                key={i}>
+                                                {p.nome}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+
+                                <input type="number"
+                                    className="qtdProdutosEscolher"
+                                    value={this.state.qtdProdutos}
+                                    onChange={e => {
+                                        this.setState({
+                                            qtdProdutos: Number(e.target.value).valueOf()
+                                        })
+                                    }}
+                                />
+                            </div>
+
+                            <button className="botaResgitrarCompraProduto"
+                                onClick={() => this.registrarCompra()}
+                            >
+                                <p>
+                                    Registrar
+                                </p>
+                            </button>
+                        </div>
                     )}
                 </div>
 
