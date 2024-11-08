@@ -3,7 +3,9 @@ import "./alterarProduto.css"
 import Produto from "../../../modelo/produto";
 
 type props = {
-    produto: Produto
+    produto: Produto,
+    listaTipos: string[],
+    listaRacas: Array<Array<string>>
 }
 
 type state = {
@@ -54,6 +56,17 @@ export default class AlterarProduto extends Component<props, state> {
                     <label>Quantidade vendido:</label>
                     <p>{this.state.produto.getCompraram}</p>
                 </div>
+
+                {this.props.listaTipos.map(t => {
+                    return (
+                        <div className="campoProdutoFixo">
+                            <label>{t} compraram:</label>
+                            <p>{(this.state.produto.getRacasCompraram.filter(r => r[0] === t)).length}</p>
+                        </div>
+                    )
+                })
+
+                }
 
             </div>
         )

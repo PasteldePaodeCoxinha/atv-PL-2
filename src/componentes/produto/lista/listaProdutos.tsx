@@ -81,7 +81,21 @@ export default class ListaProdutos extends Component<props, state> {
             } else if (this.state.ordemLista === 1) {
                 produtos = this.state.produtos.toSorted((a, b) => b.getCompraram - a.getCompraram)
             } else if (this.state.ordemLista === 2) {
+                const sortTipo = (a: Produto, b: Produto): number => {
+                    return ((b.getRacasCompraram.filter(r => r[0].toLocaleLowerCase() === this.state.tipoEscolhida.toLocaleLowerCase()).length)
+                        -
+                        (a.getRacasCompraram.filter(r => r[0].toLocaleLowerCase() === this.state.tipoEscolhida.toLocaleLowerCase()).length))
+                }
+                produtos = this.state.produtos.toSorted(sortTipo)
 
+                if (this.state.racaEscolhida !== "") {
+                    const sortRaca = (a: Produto, b: Produto): number => {
+                        return ((b.getRacasCompraram.filter(r => r[1].toLocaleLowerCase() === this.state.racaEscolhida.toLocaleLowerCase()).length)
+                            -
+                            (a.getRacasCompraram.filter(r => r[1].toLocaleLowerCase() === this.state.racaEscolhida.toLocaleLowerCase()).length))
+                    }
+                    produtos = this.state.produtos.toSorted(sortRaca)
+                }
             }
 
             let listaProduto = produtos.map((p, i) =>
@@ -165,7 +179,7 @@ export default class ListaProdutos extends Component<props, state> {
                         <button className="botaVoltarListagemProduto" onClick={() => { this.setState({ produto: undefined }) }}>
                             Voltar
                         </button>
-                        <AlterarProduto produto={this.state.produto} />
+                        <AlterarProduto produto={this.state.produto} listaTipos={this.state.listaTipos} listaRacas={this.state.listaRacas} />
                     </>
 
                 )}
