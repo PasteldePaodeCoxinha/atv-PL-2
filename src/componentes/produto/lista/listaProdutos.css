@@ -17,6 +17,12 @@
     width: 100%;
 }
 
+.seletoresDeTipoRacaProduto {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
 .tabelaProdutos {
     width: 100%;
     border-collapse: collapse;

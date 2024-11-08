@@ -14,7 +14,10 @@ type state = {
     produtos: Produto[],
     produto: Produto | undefined,
     ordemLista: number,
-    listaTiposRacas: Array<Array<string>>,
+    listaTipos: string[],
+    listaRacas: Array<Array<string>>,
+    racaEscolhida: string,
+    tipoEscolhida: string
 }
 
 export default class ListaProdutos extends Component<props, state> {
@@ -24,7 +27,10 @@ export default class ListaProdutos extends Component<props, state> {
             produtos: props.produtos,
             produto: undefined,
             ordemLista: 0,
-            listaTiposRacas: [],
+            listaTipos: [],
+            listaRacas: [],
+            racaEscolhida: "",
+            tipoEscolhida: "",
         }
         this.gerarListaProduto = this.gerarListaProduto.bind(this)
         this.excluirProduto = this.excluirProduto.bind(this)
@@ -36,8 +42,11 @@ export default class ListaProdutos extends Component<props, state> {
 
         this.props.clientes.forEach(c => {
             c.getPets.forEach(p => {
-                if (!this.state.listaTiposRacas.find(t => t[1] === p.getRaca)) {
-                    this.state.listaTiposRacas.push([p.getTipo, p.getRaca])
+                if (!this.state.listaTipos.find(t => t === p.getTipo)) {
+                    this.state.listaTipos.push(p.getTipo)
+                }
+                if (!this.state.listaRacas.find(r => r[1] === p.getRaca)) {
+                    this.state.listaRacas.push([p.getTipo, p.getRaca])
                 }
             })
         })
@@ -98,8 +107,43 @@ export default class ListaProdutos extends Component<props, state> {
                         >
                             <option value={0}>Ordenar por ordem cadastrado</option>
                             <option value={1}>Ordenar mais vendidos</option>
-                            <option value={2}>Ordenar por mais consumidos por tipo e raça+</option>
+                            <option value={2}>Ordenar por mais consumidos por tipo e raça</option>
                         </select>
+
+                        {this.state.ordemLista === 2 ? (
+                            <div className="seletoresDeTipoRacaProduto">
+                                <select className="seletorOrdemListaProduto"
+                                    onChange={e => this.setState({ tipoEscolhida: e.target.value })}
+                                    value={this.state.tipoEscolhida}
+                                >
+                                    <option value="" disabled>Selecione o tipo do pet</option>
+                                    {this.state.listaTipos.map(t => {
+                                        return (
+                                            <option value={t}>{t}</option>
+                                        )
+                                    })
+                                    }
+                                </select>
+
+                                <select className="seletorOrdemListaProduto"
+                                    onChange={e => this.setState({ racaEscolhida: e.target.value })}
+                                    value={this.state.racaEscolhida}
+                                >
+                                    <option value="" disabled>Selecione a raça do pet</option>
+                                    {this.state.listaRacas.filter(r => r[0] === this.state.tipoEscolhida).map(t => {
+                                        return (
+                                            <option value={t[1]}>{t[1]}</option>
+                                        )
+                                    })
+
+                                    }
+                                </select>
+                            </div>
+                        ) : (
+                            <></>
+                        )
+
+                        }
 
                         <table className="tabelaProdutos">
                             <thead>
