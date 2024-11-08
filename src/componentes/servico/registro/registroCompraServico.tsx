@@ -2,6 +2,7 @@ import { Component, ReactNode } from "react";
 import Cliente from "../../../modelo/cliente";
 import Servico from "../../../modelo/servico";
 import "./registroCompraServico.css"
+import Pet from "../../../modelo/pet";
 
 type props = {
     clientes: Cliente[],
@@ -11,8 +12,10 @@ type props = {
 type state = {
     cliente: Cliente | undefined,
     servico: Servico | undefined,
+    pet: Pet | undefined,
     textoAviso: string,
     nomeServico: string,
+    nomePet: string,
     qtdServicos: number
 }
 
@@ -22,8 +25,10 @@ export default class RegistroCompraServico extends Component<props, state> {
         this.state = {
             cliente: undefined,
             servico: undefined,
+            pet: undefined,
             textoAviso: "Selecione um cliente!",
             nomeServico: "",
+            nomePet: "",
             qtdServicos: 0
         }
 
@@ -42,17 +47,36 @@ export default class RegistroCompraServico extends Component<props, state> {
     }
 
     registrarCompra() {
-        if (this.state.cliente && this.state.servico) {
+        if (this.state.cliente && this.state.servico && this.state.pet) {
             for (let i = 0; i < this.state.qtdServicos; i++) {
-                this.state.cliente.getServicosConsumidos.push(this.state.servico)
+                const cliente = this.state.cliente
+                const servico = this.state.servico
+                const pet = this.state.pet
+
+                cliente.getServicosConsumidos.push(servico)
+                cliente.setValorGasto = cliente.getValorGasto + Number(((servico.preco * 100) * 0.01).toFixed(2)).valueOf()
+                servico.compraramMaisUm()
+                servico.getRacasCompraram.push([pet.getTipo, pet.getRaca])
+
+                this.setState({
+                    cliente: cliente,
+                    servico: servico,
+                    pet: pet
+                })
             }
+        } else {
+            this.setState({
+                textoAviso: "Preencha todos os campos!"
+            })
+            return
         }
 
         this.setState({
             textoAviso: "Compra registrada!",
             servico: undefined,
             qtdServicos: 0,
-            nomeServico: ""
+            nomeServico: "",
+            nomePet: ""
         })
 
         setTimeout(() => {
@@ -112,6 +136,27 @@ export default class RegistroCompraServico extends Component<props, state> {
                                                 value={p.nome}
                                                 key={i}>
                                                 {p.nome}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+
+                                <select className="seletorProduto"
+                                    onChange={e => {
+                                        this.setState({
+                                            pet: this.state.cliente?.getPets.find(p => p.getNome === e.target.value),
+                                            nomePet: e.target.value
+                                        })
+                                    }}
+                                    value={this.state.nomePet}
+                                >
+                                    <option value="" disabled>Selecione o Pet</option>
+                                    {this.state.cliente.getPets.map((p, i) => {
+                                        return (
+                                            <option
+                                                value={p.getNome}
+                                                key={i}>
+                                                {p.getNome}
                                             </option>
                                         )
                                     })}
