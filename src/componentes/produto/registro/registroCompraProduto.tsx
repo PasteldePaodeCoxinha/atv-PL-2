@@ -49,9 +49,20 @@ export default class RegistroCompraProduto extends Component<props, state> {
     registrarCompra() {
         if (this.state.cliente && this.state.produto && this.state.pet) {
             for (let i = 0; i < this.state.qtdProdutos; i++) {
-                this.state.cliente.getProdutosConsumidos.push(this.state.produto)
-                this.state.produto.compraramMaisUm()
-                this.state.produto.getRacasCompraram.push([this.state.pet.getTipo, this.state.pet.getRaca])
+                const cliente = this.state.cliente
+                const produto = this.state.produto
+                const pet = this.state.pet
+
+                cliente.getProdutosConsumidos.push(produto)
+                cliente.setValorGasto = cliente.getValorGasto + Number(((produto.preco * 100) * 0.01).toFixed(2)).valueOf()
+                produto.compraramMaisUm()
+                produto.getRacasCompraram.push([pet.getTipo, pet.getRaca])
+
+                this.setState({
+                    cliente: cliente,
+                    produto: produto,
+                    pet: pet
+                })
             }
         } else {
             this.setState({
