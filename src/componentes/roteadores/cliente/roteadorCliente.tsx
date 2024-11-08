@@ -6,7 +6,7 @@ import Cliente from "../../../modelo/cliente";
 import ListaCliente from "../../cliente/lista/listaClientes";
 
 type props = {
-    clientes: Array<Cliente>
+    clientes: Cliente[]
 }
 
 type state = {

@@ -7,11 +7,11 @@ import Telefone from "../../../modelo/telefone";
 import "./formularioCadastroCliente.css"
 
 type props = {
-    clientes: Array<Cliente>
+    clientes: Cliente[]
 }
 
 type state = {
-    clientes: Array<Cliente>
+    clientes: Cliente[]
     nome: string
     nomeSocial: string
     email: string

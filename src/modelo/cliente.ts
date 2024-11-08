@@ -13,10 +13,10 @@ export default class Cliente {
     private rgs: Array<RG>
     private dataCadastro: Date
     private telefones: Array<Telefone>
-    private produtosConsumidos: Array<Produto>
-    private servicosConsumidos: Array<Servico>
+    private produtosConsumidos: Produto[]
+    private servicosConsumidos: Servico[]
     private valorGasto: number
-    private pets: Array<Pet>
+    private pets: Pet[]
     constructor(nome: string, nomeSocial: string, email: string, cpf: CPF, rgs: Array<RG>, telefones: Array<Telefone>) {
         this.nome = nome
         this.nomeSocial = nomeSocial
@@ -55,17 +55,17 @@ export default class Cliente {
         this.telefones = telefones
     }
 
-    public get getProdutosConsumidos(): Array<Produto> {
+    public get getProdutosConsumidos(): Produto[] {
         return this.produtosConsumidos
     }
-    public get getServicosConsumidos(): Array<Servico> {
+    public get getServicosConsumidos(): Servico[] {
         return this.servicosConsumidos
     }
 
-    public get getPets(): Array<Pet> {
+    public get getPets(): Pet[] {
         return this.pets
     }
-    public set setPets(pets: Array<Pet>) {
+    public set setPets(pets: Pet[]) {
         this.pets = pets
     }
 

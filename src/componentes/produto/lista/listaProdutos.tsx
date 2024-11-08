@@ -5,11 +5,11 @@ import Produto from "../../../modelo/produto";
 import AlterarProduto from "../alterar/alterarProduto";
 
 type props = {
-    produtos: Array<Produto>
+    produtos: Produto[]
 }
 
 type state = {
-    produtos: Array<Produto>,
+    produtos: Produto[],
     produto: Produto | undefined,
     ordemLista: number
 }
@@ -59,6 +59,8 @@ export default class ListaProdutos extends Component<props, state> {
                 produtos = this.props.produtos
             } else if(this.state.ordemLista === 1) {
                 produtos = this.state.produtos.toSorted((a, b) => b.getCompraram - a.getCompraram)
+            } else if(this.state.ordemLista === 2){
+
             }
 
             let listaProduto = produtos.map((p, i) =>
@@ -84,6 +86,7 @@ export default class ListaProdutos extends Component<props, state> {
                         >
                             <option value={0}>Ordenar por ordem cadastrado</option>
                             <option value={1}>Ordenar mais vendidos</option>
+                            <option value={2}>Ordenar por mais consumidos por tipo e raça+</option>
                         </select>
 
                         <table className="tabelaProdutos">

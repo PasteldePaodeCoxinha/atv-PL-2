@@ -6,7 +6,7 @@ import FormularioCadastroPet from "../../pet/forms/formularioCadastroPet";
 import ListaPet from "../../pet/lista/listaPets";
 
 type props = {
-    clientes: Array<Cliente>
+    clientes: Cliente[]
 }
 
 type state = {

@@ -4,7 +4,7 @@ import "./formularioCadastroServico.css"
 import Servico from "../../../modelo/servico";
 
 type props = {
-    servicos: Array<Servico>
+    servicos: Servico[]
 }
 
 type state = {

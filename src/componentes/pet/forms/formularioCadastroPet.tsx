@@ -5,7 +5,7 @@ import "./formularioCadastroPet.css"
 import Pet from "../../../modelo/pet";
 
 type props = {
-    clientes: Array<Cliente>
+    clientes: Cliente[]
 }
 
 type state = {

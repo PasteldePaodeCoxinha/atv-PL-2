@@ -7,7 +7,7 @@ import AlterarPet from "../alterar/alterarPet";
 
 
 type props = {
-    clientes: Array<Cliente>
+    clientes: Cliente[]
 }
 
 type state = {

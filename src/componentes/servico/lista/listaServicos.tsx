@@ -5,11 +5,11 @@ import Servico from "../../../modelo/servico";
 import AlterarServico from "../alterar/alterarServico";
 
 type props = {
-    servicos: Array<Servico>
+    servicos: Servico[]
 }
 
 type state = {
-    servicos: Array<Servico>
+    servicos: Servico[]
     servico: Servico | undefined
 }
 

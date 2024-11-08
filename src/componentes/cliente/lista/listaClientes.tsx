@@ -5,11 +5,11 @@ import Cliente from "../../../modelo/cliente";
 import AlterarCliente from "../alterar/alterarCliente";
 
 type props = {
-    clientes: Array<Cliente>
+    clientes: Cliente[]
 }
 
 type state = {
-    clientes: Array<Cliente>
+    clientes: Cliente[]
     cliente: Cliente | undefined
     nome: string
     nomeSocial: string
