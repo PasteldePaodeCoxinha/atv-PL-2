@@ -9,8 +9,9 @@ type props = {
 }
 
 type state = {
-    produtos: Array<Produto>
-    produto: Produto | undefined
+    produtos: Array<Produto>,
+    produto: Produto | undefined,
+    ordemLista: number
 }
 
 export default class ListaProdutos extends Component<props, state> {
@@ -18,7 +19,8 @@ export default class ListaProdutos extends Component<props, state> {
         super(props)
         this.state = {
             produtos: props.produtos,
-            produto: undefined
+            produto: undefined,
+            ordemLista: 0
         }
         this.gerarListaProduto = this.gerarListaProduto.bind(this)
         this.excluirProduto = this.excluirProduto.bind(this)
@@ -51,7 +53,15 @@ export default class ListaProdutos extends Component<props, state> {
         if (this.state.produtos.length <= 0) {
             return <></>
         } else {
-            let listaProduto = this.state.produtos.map((p, i) =>
+            let produtos = this.state.produtos
+
+            if (this.state.ordemLista === 0) {
+                produtos = this.props.produtos
+            } else if(this.state.ordemLista === 1) {
+                produtos = this.state.produtos.toSorted((a, b) => b.getCompraram - a.getCompraram)
+            }
+
+            let listaProduto = produtos.map((p, i) =>
                 <tr className="linhaTabelaProdutos" key={i} onClick={() => this.pegarUmProduto(p.nome)
                 }>
                     <td>{p.nome}</td>
@@ -68,6 +78,14 @@ export default class ListaProdutos extends Component<props, state> {
             <div className="containerListaProduto">
                 {this.state.produto === undefined ? (
                     <div className="produtosCadastrados">
+
+                        <select className="seletorOrdemListaProduto"
+                            onChange={e => this.setState({ ordemLista: Number(e.target.value).valueOf() })}
+                        >
+                            <option value={0}>Ordenar por ordem cadastrado</option>
+                            <option value={1}>Ordenar mais vendidos</option>
+                        </select>
+
                         <table className="tabelaProdutos">
                             <thead>
                                 <tr className="headerTabelaProdutos">

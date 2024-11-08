@@ -10,6 +10,10 @@
 }
 
 .produtosCadastrados {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
     width: 100%;
 }
 
@@ -79,4 +83,13 @@
     z-index: 1;
     transition: all 0.2s;
     width: 7%;
+}
+
+.seletorOrdemListaProduto {
+    font-size: 1.1rem;
+    width: 50%;
+    background: transparent;
+    border-width: 2px;
+    border-color: #453E96;
+    box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
 }
