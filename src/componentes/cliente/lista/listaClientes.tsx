@@ -66,6 +66,8 @@ export default class ListaCliente extends Component<props, state> {
                 clientes = clientes.toSorted((a, b) => b.getProdutosConsumidos.length - a.getProdutosConsumidos.length)
             } else if (this.state.ordemLista === 2) {
                 clientes = clientes.toSorted((a, b) => b.getServicosConsumidos.length - a.getServicosConsumidos.length)
+            } else if (this.state.ordemLista === 3) {
+                clientes = clientes.toSorted((a, b) => b.getValorGasto - a.getValorGasto)
             }
 
             let listaCliente = clientes.map((c, i) =>
@@ -92,6 +94,7 @@ export default class ListaCliente extends Component<props, state> {
                             <option value={0}>Ordenar por ordem cadastrado</option>
                             <option value={1}>Ordenar por qtd produtos consumidos</option>
                             <option value={2}>Ordenar por qtd serviços consumidos</option>
+                            <option value={3}>Ordenar por valor gasto</option>
                         </select>
 
                         <table className="tabelaClientes">
