@@ -2,6 +2,7 @@ import { Component, ReactNode } from "react";
 import Cliente from "../../../modelo/cliente";
 import Produto from "../../../modelo/produto";
 import "./registroCompraProduto.css"
+import Pet from "../../../modelo/pet";
 
 type props = {
     clientes: Cliente[],
@@ -11,8 +12,10 @@ type props = {
 type state = {
     cliente: Cliente | undefined,
     produto: Produto | undefined,
+    pet: Pet | undefined,
     textoAviso: string,
     nomeProduto: string,
+    nomePet: string,
     qtdProdutos: number
 }
 
@@ -22,8 +25,10 @@ export default class RegistroCompraProduto extends Component<props, state> {
         this.state = {
             cliente: undefined,
             produto: undefined,
+            pet: undefined,
             textoAviso: "Selecione um cliente!",
             nomeProduto: "",
+            nomePet: "",
             qtdProdutos: 0
         }
 
@@ -42,17 +47,25 @@ export default class RegistroCompraProduto extends Component<props, state> {
     }
 
     registrarCompra() {
-        if (this.state.cliente && this.state.produto) {
+        if (this.state.cliente && this.state.produto && this.state.pet) {
             for (let i = 0; i < this.state.qtdProdutos; i++) {
                 this.state.cliente.getProdutosConsumidos.push(this.state.produto)
+                this.state.produto.compraramMaisUm()
+                this.state.produto.getRacasCompraram.push([this.state.pet.getTipo, this.state.pet.getRaca])
             }
+        } else {
+            this.setState({
+                textoAviso: "Preencha todos os campos!"
+            })
+            return
         }
 
         this.setState({
             textoAviso: "Compra registrada!",
             produto: undefined,
             qtdProdutos: 0,
-            nomeProduto: ""
+            nomeProduto: "",
+            nomePet: ""
         })
 
         setTimeout(() => {
@@ -112,6 +125,27 @@ export default class RegistroCompraProduto extends Component<props, state> {
                                                 value={p.nome}
                                                 key={i}>
                                                 {p.nome}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+
+                                <select className="seletorProduto"
+                                    onChange={e => {
+                                        this.setState({
+                                            pet: this.state.cliente?.getPets.find(p => p.getNome === e.target.value),
+                                            nomePet: e.target.value
+                                        })
+                                    }}
+                                    value={this.state.nomePet}
+                                >
+                                    <option value="" disabled>Selecione o Pet</option>
+                                    {this.state.cliente.getPets.map((p, i) => {
+                                        return (
+                                            <option
+                                                value={p.getNome}
+                                                key={i}>
+                                                {p.getNome}
                                             </option>
                                         )
                                     })}
