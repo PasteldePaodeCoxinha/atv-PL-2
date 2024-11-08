@@ -32,9 +32,9 @@ export default class Roteador extends Component<{}, state> {
         document.body.style.backgroundColor = "#2513EB"
         const empresaAtual = new Empresa()
 
-        const petA = [new Pet("babão", "cachorro", "pitbull", "masculino", "grande"), new Pet("bebedouro", "cachorro", "poodle", "masculino", "pequeno"), new Pet("bibiane", "cachorro", "caramelo", "feminino", "médio")]
-        const petB = [new Pet("cartão", "gato", "branco", "feminino", "grande"), new Pet("ceara", "gato", "amarelo", "feminino", "pequeno"), new Pet("cimitarra", "gato", "preto", "masculino", "médio")]
-        const petC = [new Pet("dario", "cachorro", "borzoi", "masculino", "grande"), new Pet("dedão", "gato", "preto e branco", "feminino", "pequeno"), new Pet("ciranda", "hamster", "naosei", "feminino", "grande")]
+        const petA = [new Pet("babão", "cachorro", "pitbull", "masculino", "grande"), new Pet("bebedouro", "cachorro", "borzoi", "masculino", "pequeno"), new Pet("bibiane", "cachorro", "caramelo", "feminino", "médio")]
+        const petB = [new Pet("cartão", "gato", "branco", "feminino", "grande"), new Pet("ceara", "gato", "amarelo", "feminino", "pequeno"), new Pet("cimitarra", "gato", "branco", "masculino", "médio")]
+        const petC = [new Pet("dario", "cachorro", "borzoi", "masculino", "grande"), new Pet("dedão", "gato", "amarelo", "feminino", "pequeno"), new Pet("ciranda", "hamster", "sirio", "feminino", "grande")]
 
         const clientes = (
             [new Cliente("Josévaldo", "mario", "a@email.com", new CPF("123", new Date()), [new RG("147", new Date())], [new Telefone("12", "159")]),

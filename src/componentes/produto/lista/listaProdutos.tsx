@@ -3,15 +3,18 @@ import React, { Component } from "react";
 import "./listaProdutos.css"
 import Produto from "../../../modelo/produto";
 import AlterarProduto from "../alterar/alterarProduto";
+import Cliente from "../../../modelo/cliente";
 
 type props = {
     produtos: Produto[]
+    clientes: Cliente[]
 }
 
 type state = {
     produtos: Produto[],
     produto: Produto | undefined,
-    ordemLista: number
+    ordemLista: number,
+    listaTiposRacas: Array<Array<string>>,
 }
 
 export default class ListaProdutos extends Component<props, state> {
@@ -20,7 +23,8 @@ export default class ListaProdutos extends Component<props, state> {
         this.state = {
             produtos: props.produtos,
             produto: undefined,
-            ordemLista: 0
+            ordemLista: 0,
+            listaTiposRacas: [],
         }
         this.gerarListaProduto = this.gerarListaProduto.bind(this)
         this.excluirProduto = this.excluirProduto.bind(this)
@@ -29,6 +33,14 @@ export default class ListaProdutos extends Component<props, state> {
 
     componentDidMount(): void {
         this.gerarListaProduto()
+
+        this.props.clientes.forEach(c => {
+            c.getPets.forEach(p => {
+                if (!this.state.listaTiposRacas.find(t => t[1] === p.getRaca)) {
+                    this.state.listaTiposRacas.push([p.getTipo, p.getRaca])
+                }
+            })
+        })
     }
 
     componentDidUpdate(): void {
@@ -57,9 +69,9 @@ export default class ListaProdutos extends Component<props, state> {
 
             if (this.state.ordemLista === 0) {
                 produtos = this.props.produtos
-            } else if(this.state.ordemLista === 1) {
+            } else if (this.state.ordemLista === 1) {
                 produtos = this.state.produtos.toSorted((a, b) => b.getCompraram - a.getCompraram)
-            } else if(this.state.ordemLista === 2){
+            } else if (this.state.ordemLista === 2) {
 
             }
 
