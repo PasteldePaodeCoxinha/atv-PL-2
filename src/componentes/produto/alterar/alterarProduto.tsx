@@ -58,12 +58,22 @@ export default class AlterarProduto extends Component<props, state> {
                 </div>
 
                 {this.props.listaTipos.map(t => {
-                    return (
+                    return (<>
                         <div className="campoProdutoFixo">
                             <label>{t} compraram:</label>
                             <p>{(this.state.produto.getRacasCompraram.filter(r => r[0] === t)).length}</p>
                         </div>
-                    )
+                        {this.props.listaRacas.filter(r => r[0] === t).map(ra => {
+                            return (
+                                <div className="subCampoProdutoFixo">
+                                    <label>{ra[1]} compraram:</label>
+                                    <p>{(this.state.produto.getRacasCompraram.filter(r => r[1] === ra[1])).length}</p>
+                                </div>
+                            )
+                        })
+
+                        }
+                    </>)
                 })
 
                 }
