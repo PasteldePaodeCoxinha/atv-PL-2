@@ -44,7 +44,7 @@ export default class RoteadorServico extends Component<props, state> {
             return (
                 <div className="paginaListaServico">
                     {barraNavegacao}
-                    <ListaServicos servicos={this.props.servicos} />
+                    <ListaServicos servicos={this.props.servicos} clientes={this.props.clientes} />
                 </div>
             )
         } else if (this.state.tela === 'Cadastro') {
