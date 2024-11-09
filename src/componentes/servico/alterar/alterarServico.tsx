@@ -3,7 +3,9 @@ import "./alterarServico.css"
 import Servico from "../../../modelo/servico";
 
 type props = {
-    servico: Servico
+    servico: Servico,
+    listaTipos: string[],
+    listaRacas: Array<Array<string>>
 }
 
 type state = {
@@ -53,6 +55,27 @@ export default class AlterarServico extends Component<props, state> {
                     <label>Quantidade vendido:</label>
                     <p>{this.state.servico.getCompraram}</p>
                 </div>
+
+                {this.props.listaTipos.map(t => {
+                    return (<>
+                        <div className="campoServicoFixo">
+                            <label>{t} compraram:</label>
+                            <p>{(this.state.servico.getRacasCompraram.filter(r => r[0] === t)).length}</p>
+                        </div>
+                        {this.props.listaRacas.filter(r => r[0] === t).map(ra => {
+                            return (
+                                <div className="subCampoServicoFixo">
+                                    <label>{ra[1]} compraram:</label>
+                                    <p>{(this.state.servico.getRacasCompraram.filter(r => r[1] === ra[1])).length}</p>
+                                </div>
+                            )
+                        })
+
+                        }
+                    </>)
+                })
+
+                }
 
             </div>
         )

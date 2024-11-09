@@ -179,7 +179,7 @@ export default class ListaServicos extends Component<props, state> {
                         <button className="botaVoltarListagemServico" onClick={() => { this.setState({ servico: undefined }) }}>
                             Voltar
                         </button>
-                        <AlterarServico servico={this.state.servico} />
+                        <AlterarServico servico={this.state.servico} listaTipos={this.state.listaTipos} listaRacas={this.state.listaRacas} />
                     </>
 
                 )}

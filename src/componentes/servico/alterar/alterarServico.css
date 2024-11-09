@@ -12,7 +12,8 @@
 }
 
 .campoServicoEditavel,
-.campoServicoFixo {
+.campoServicoFixo,
+.subCampoServicoFixo {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -39,6 +40,17 @@
     font-size: 0.9rem;
 }
 
+.subCampoServicoFixo label {
+    font-size: 0.7rem;
+    margin-left: 8rem;
+}
+
+.subCampoServicoFixo p {
+    margin-left: auto;
+    margin-right: 2rem;
+    font-size: 0.7rem;
+}
+
 @media only screen and (min-width: 768px) {
     .containerInformacoesServico label {
         font-size: 1.3rem;
@@ -60,5 +72,16 @@
         margin-left: auto;
         margin-right: 4rem;
         font-size: 1.3rem;
+    }
+
+    .subCampoServicoFixo label {
+        font-size: 1.1rem;
+        margin-left: 16rem;
+    }
+
+    .subCampoServicoFixo p {
+        margin-left: auto;
+        margin-right: 4rem;
+        font-size: 1.2rem;
     }
 }
