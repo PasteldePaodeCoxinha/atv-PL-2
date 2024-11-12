@@ -80,9 +80,15 @@ export default class FormularioCadastroCliente extends Component<props, state> {
     }
 
     mudarValorCpf(e: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({
-            valorCpf: e.target.value
-        })
+        if (!isNaN(Number(e.target.value).valueOf())) {
+            this.setState({
+                valorCpf: e.target.value
+            })
+        } else {
+            this.setState({
+                valorCpf: this.state.valorCpf
+            })
+        }
     }
 
     mudarValorDataCpf(e: React.ChangeEvent<HTMLInputElement>) {
@@ -92,9 +98,15 @@ export default class FormularioCadastroCliente extends Component<props, state> {
     }
 
     mudarValorRg(e: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({
-            valorRg: e.target.value
-        })
+        if (!isNaN(Number(e.target.value).valueOf())) {
+            this.setState({
+                valorRg: e.target.value
+            })
+        } else {
+            this.setState({
+                valorRg: this.state.valorRg
+            })
+        }
     }
 
     mudarValorDataRg(e: React.ChangeEvent<HTMLInputElement>) {
@@ -104,15 +116,27 @@ export default class FormularioCadastroCliente extends Component<props, state> {
     }
 
     mudarValorTelefone1(e: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({
-            telefone1: e.target.value
-        })
+        if (!isNaN(Number(e.target.value).valueOf())) {
+            this.setState({
+                telefone1: e.target.value
+            })
+        } else {
+            this.setState({
+                telefone1: this.state.telefone1
+            })
+        }
     }
 
     mudarValorTelefone2(e: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({
-            telefone2: e.target.value
-        })
+        if (!isNaN(Number(e.target.value).valueOf())) {
+            this.setState({
+                telefone2: e.target.value
+            })
+        } else {
+            this.setState({
+                telefone2: this.state.telefone2
+            })
+        }
     }
 
     clienteCriarAdicionar(e: React.ChangeEvent<HTMLFormElement>) {
@@ -203,7 +227,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 onChange={this.mudarValorCpf}
                                 required />
 
-                            <input type="text"
+                            <input type="date"
                                 className="inputClienteForms"
                                 placeholder="Data CPF"
                                 datatype=""
@@ -224,7 +248,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 onChange={this.mudarValorRg}
                                 required />
 
-                            <input type="text"
+                            <input type="date"
                                 placeholder="Data RG"
                                 className="inputClienteForms"
                                 value={this.state.dataRg}
