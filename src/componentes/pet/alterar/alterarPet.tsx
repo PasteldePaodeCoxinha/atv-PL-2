@@ -29,7 +29,7 @@ export default class AlterarPet extends Component<props, state> {
         })
     }
 
-    mudarValorTamanho(e: React.ChangeEvent<HTMLInputElement>) {
+    mudarValorTamanho(e: React.ChangeEvent<HTMLSelectElement>) {
         const pet = this.state.pet
         pet.setTamanho = e.target.value
         this.setState({
@@ -42,7 +42,7 @@ export default class AlterarPet extends Component<props, state> {
             <div className="containerInformacoesPet">
                 <div className="campoPetEditavel">
                     <label>Nome:</label>
-                    <input type="text" value={this.state.pet.getNome} onChange={this.mudarValorNome}/>
+                    <input type="text" value={this.state.pet.getNome} onChange={this.mudarValorNome} />
                 </div>
 
                 <div className="campoPetFixo">
@@ -52,7 +52,14 @@ export default class AlterarPet extends Component<props, state> {
 
                 <div className="campoPetEditavel">
                     <label>Tamanho:</label>
-                    <input type="email" value={this.state.pet.getTamanho} onChange={this.mudarValorTamanho}/>
+                    <select className="selectPetAlterar"
+                        onChange={this.mudarValorTamanho}
+                        value={this.state.pet.getTamanho}>
+                        <option value="" disabled>Tamanho</option>
+                        <option value="Grande">Grande</option>
+                        <option value="Médio">Médio</option>
+                        <option value="Pequeno">Pequeno</option>
+                    </select>
                 </div>
 
                 <div className="campoPetFixo">

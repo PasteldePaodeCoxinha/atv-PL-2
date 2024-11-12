@@ -65,7 +65,7 @@ export default class FormularioCadastroPet extends Component<props, state> {
         })
     }
 
-    mudarValorTamanho(e: React.ChangeEvent<HTMLInputElement>) {
+    mudarValorTamanho(e: React.ChangeEvent<HTMLSelectElement>) {
         this.setState({
             tamanho: e.target.value
         })
@@ -177,13 +177,14 @@ export default class FormularioCadastroPet extends Component<props, state> {
                             required
                         />
 
-                        <input type="text"
-                            className="inputPetForms"
-                            placeholder="Tamanho"
-                            value={this.state.tamanho}
+                        <select className="selectPetForms"
                             onChange={this.mudarValorTamanho}
-                            required
-                        />
+                            value={this.state.tamanho}>
+                            <option value="" disabled>Tamanho</option>
+                            <option value="Grande">Grande</option>
+                            <option value="Médio">Médio</option>
+                            <option value="Pequeno">Pequeno</option>
+                        </select>
 
                     </div>
 
