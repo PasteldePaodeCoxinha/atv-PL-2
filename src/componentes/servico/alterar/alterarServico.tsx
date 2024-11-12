@@ -47,7 +47,7 @@ export default class AlterarServico extends Component<props, state> {
                 </div>
 
                 <div className="campoServicoEditavel">
-                    <label>Tamanho:</label>
+                    <label>Preço:</label>
                     <input type="number" value={this.state.servico.preco} onChange={this.mudarValorPreco} />
                 </div>
 

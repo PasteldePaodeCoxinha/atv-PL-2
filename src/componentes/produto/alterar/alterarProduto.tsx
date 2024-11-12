@@ -48,7 +48,7 @@ export default class AlterarProduto extends Component<props, state> {
                 </div>
 
                 <div className="campoProdutoEditavel">
-                    <label>Tamanho:</label>
+                    <label>Preço:</label>
                     <input type="number" value={this.state.produto.preco} onChange={this.mudarValorPreco} />
                 </div>
 
