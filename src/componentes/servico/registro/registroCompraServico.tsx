@@ -119,6 +119,8 @@ export default class RegistroCompraServico extends Component<props, state> {
                                 Voltar
                             </button>
 
+                            <p>{this.state.cliente.nome}</p>
+
                             <div className="containerSeletorServico">
                                 <select className="seletorServico"
                                     onChange={e => {

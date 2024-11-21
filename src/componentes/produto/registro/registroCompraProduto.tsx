@@ -16,7 +16,8 @@ type state = {
     textoAviso: string,
     nomeProduto: string,
     nomePet: string,
-    qtdProdutos: number
+    qtdProdutos: number,
+    showLista: boolean,
 }
 
 export default class RegistroCompraProduto extends Component<props, state> {
@@ -29,7 +30,8 @@ export default class RegistroCompraProduto extends Component<props, state> {
             textoAviso: "Selecione um cliente!",
             nomeProduto: "",
             nomePet: "",
-            qtdProdutos: 0
+            qtdProdutos: 0,
+            showLista: false
         }
 
         this.selecionarCliente = this.selecionarCliente.bind(this)
@@ -119,6 +121,8 @@ export default class RegistroCompraProduto extends Component<props, state> {
                                 Voltar
                             </button>
 
+                            <p className="textoAvisoRegistroProduto">{this.state.cliente.nome}</p>
+
                             <div className="containerSeletorProduto">
                                 <select className="seletorProduto"
                                     onChange={e => {
@@ -172,6 +176,10 @@ export default class RegistroCompraProduto extends Component<props, state> {
                                     }}
                                 />
                             </div>
+
+                            <button className="botaVoltarRegistroProduto" onClick={() => { this.setState({ cliente: undefined }) }}>
+                                Registro de compras
+                            </button>
 
                             <button className="botaResgitrarCompraProduto"
                                 onClick={() => this.registrarCompra()}
